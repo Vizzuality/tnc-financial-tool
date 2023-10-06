@@ -8,8 +8,8 @@ export type Country = {
   available: number;
   needed: number;
 
-  availableGDP: number;
-  neededGDP: number;
+  available_by_GDP: number;
+  needed_by_GDP: number;
 
   drivers: {
     id: number;

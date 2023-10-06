@@ -28,6 +28,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/is-prop-valid@npm:^0.8.2":
+  version: 0.8.8
+  resolution: "@emotion/is-prop-valid@npm:0.8.8"
+  dependencies:
+    "@emotion/memoize": 0.7.4
+  checksum: bb7ec6d48c572c540e24e47cc94fc2f8dec2d6a342ae97bc9c8b6388d9b8d283862672172a1bb62d335c02662afe6291e10c71e9b8642664a8b43416cdceffac
+  languageName: node
+  linkType: hard
+
+"@emotion/memoize@npm:0.7.4":
+  version: 0.7.4
+  resolution: "@emotion/memoize@npm:0.7.4"
+  checksum: 4e3920d4ec95995657a37beb43d3f4b7d89fed6caa2b173a4c04d10482d089d5c3ea50bbc96618d918b020f26ed6e9c4026bbd45433566576c1f7b056c3271dc
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -819,7 +835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:1.0.2":
+"@radix-ui/react-slot@npm:1.0.2, @radix-ui/react-slot@npm:^1.0.2":
   version: 1.0.2
   resolution: "@radix-ui/react-slot@npm:1.0.2"
   dependencies:
@@ -1252,6 +1268,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.172":
+  version: 4.14.199
+  resolution: "@types/lodash@npm:4.14.199"
+  checksum: e68d1fcbbfce953ed87b296a628573f62939227bcda0c934954e862b421e8a34c5e71cad6fea27b9980567909e6a4698f09025692958e36d64ea9ed99ec6fb2e
+  languageName: node
+  linkType: hard
+
 "@types/mapbox-gl@npm:>=1.0.0":
   version: 2.7.15
   resolution: "@types/mapbox-gl@npm:2.7.15"
@@ -1606,6 +1629,20 @@ __metadata:
     "@types/d3-random": ^2.2.0
     d3-random: ^2.2.2
   checksum: 8d449ea1cabaf39b43bfa9e3228ef76dc0dfa1f5b23a5a0005ddebfa2a3e2dffc79d877b188610a6e2957a649367c7e736bc8d03d23a7d29def984997be75442
+  languageName: node
+  linkType: hard
+
+"@visx/responsive@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@visx/responsive@npm:3.3.0"
+  dependencies:
+    "@types/lodash": ^4.14.172
+    "@types/react": "*"
+    lodash: ^4.17.21
+    prop-types: ^15.6.1
+  peerDependencies:
+    react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 8f23d09bdb66d1deb35a393ff731438e8f9329a0dba89cffe00cc7aadd7ffd6af021eed1452f91a8cc0566b1f025b59d32f060f9070ef2bc66c7a41f8a06c9fb
   languageName: node
   linkType: hard
 
@@ -3465,6 +3502,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^10.16.4":
+  version: 10.16.4
+  resolution: "framer-motion@npm:10.16.4"
+  dependencies:
+    "@emotion/is-prop-valid": ^0.8.2
+    tslib: ^2.4.0
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  dependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 57eb252f25a2c4ee14b024295c6a1162a53a05e0321bdb9c8a22ec266fbe777832823eaa0309e42854170fcde16c42915c6c5d0208b628fd000d6fab013c501f
+  languageName: node
+  linkType: hard
+
 "fresh@npm:0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
@@ -4586,6 +4644,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
   languageName: node
   linkType: hard
 
@@ -6824,6 +6889,7 @@ __metadata:
     "@radix-ui/react-label": 2.0.2
     "@radix-ui/react-popover": 1.0.7
     "@radix-ui/react-radio-group": 1.1.3
+    "@radix-ui/react-slot": ^1.0.2
     "@radix-ui/react-tooltip": 1.0.7
     "@t3-oss/env-nextjs": 0.6.1
     "@tanstack/eslint-plugin-query": 4.34.1
@@ -6838,6 +6904,7 @@ __metadata:
     "@visx/group": ^3.3.0
     "@visx/hierarchy": ^3.3.0
     "@visx/mock-data": ^3.3.0
+    "@visx/responsive": ^3.3.0
     "@visx/scale": ^3.3.0
     autoprefixer: 10.4.16
     class-variance-authority: 0.7.0
@@ -6847,6 +6914,7 @@ __metadata:
     eslint-config-prettier: 9.0.0
     eslint-plugin-prettier: 5.0.0
     express: 4.18.2
+    framer-motion: ^10.16.4
     husky: 8.0.3
     mapbox-gl: 2.15.0
     next: 13.5.3

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { Group } from "@visx/group";
-import { Treemap, hierarchy, stratify, treemapSquarify } from "@visx/hierarchy";
-import { scaleOrdinal } from "@visx/scale";
+import { Treemap, hierarchy, stratify, treemapSquarify, treemapSlice } from "@visx/hierarchy";
+import { scaleLinear, scaleOrdinal } from "@visx/scale";
+import { motion } from "framer-motion";
 
 export const background = "#FFF";
 
@@ -78,55 +79,118 @@ const data = stratify<DataProps>()
   .parentId((d) => d.parent)(DATA)
   .sum((d) => d.size ?? 0);
 
-const defaultMargin = { top: 10, left: 10, right: 10, bottom: 10 };
+const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
 export type TreemapProps = {
+  mode: "tree" | "bar";
+  percentage: number;
   width: number;
   height: number;
-  margin?: { top: number; right: number; bottom: number; left: number };
 };
 
-export default function TreemapChart({ width, height, margin = defaultMargin }: TreemapProps) {
+export default function TreemapChart({
+  mode,
+  percentage,
+  width: parentWidth,
+  height: parentHeight,
+}: TreemapProps) {
+  const widthScale = scaleLinear<number>({
+    domain: [0, 1],
+    range: [0, parentWidth ?? 200],
+  });
+
+  const width = useMemo(() => {
+    return mode === "bar" ? widthScale(percentage) : 200;
+  }, [mode, percentage, widthScale]);
+
+  const gapWidth = widthScale(1 - percentage);
+  const height = mode === "bar" ? 50 : 200;
+
+  const margin = defaultMargin;
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
   const root = hierarchy(data).sort((a, b) => (b.value || 0) - (a.value || 0));
+  const transition = {
+    duration: 0.3,
+    delay: mode === "bar" ? 0 : 0.5,
+  };
 
-  return width < 10 ? null : (
-    <svg width={width} height={height}>
-      <Treemap<typeof data>
-        top={margin.top}
-        root={root}
-        size={[xMax, yMax]}
-        tile={treemapSquarify}
-        round
+  return (
+    <div className="flex w-full">
+      <motion.svg
+        initial={{
+          width,
+          height,
+        }}
+        animate={{
+          width,
+          height,
+        }}
+        transition={transition}
       >
-        {(treemap) => (
-          <Group>
-            {treemap
-              .descendants()
-              .reverse()
-              .map((node, i) => {
-                const nodeWidth = node.x1 - node.x0;
-                const nodeHeight = node.y1 - node.y0;
-                const nodeColor = colorScale2(node.data.data.id);
+        {!!parentWidth && !!parentHeight && (
+          <Treemap<typeof data>
+            top={margin.top}
+            root={root}
+            size={[xMax, yMax]}
+            tile={mode == "bar" ? treemapSlice : treemapSquarify}
+            round
+          >
+            {(treemap) => (
+              <Group>
+                {treemap
+                  .descendants()
+                  .reverse()
+                  .map((node) => {
+                    const nodeWidth = node.x1 - node.x0;
+                    const nodeHeight = node.y1 - node.y0;
+                    const nodeColor = colorScale2(node.data.data.id);
 
-                return (
-                  <Group key={`node-${i}`} top={node.y0 + margin.top} left={node.x0 + margin.left}>
-                    {node.depth === 1 && (
-                      <rect
-                        width={nodeWidth}
-                        height={nodeHeight}
-                        fill={nodeColor}
-                        stroke={background}
-                        strokeWidth={3}
-                      />
-                    )}
-                  </Group>
-                );
-              })}
-          </Group>
+                    return (
+                      <Group key={`node-${node.data.data.id}`}>
+                        {node.depth === 1 && (
+                          <motion.rect
+                            initial={{
+                              x: node.x0 + margin.left,
+                              y: node.y0 + margin.top,
+                              width: nodeWidth,
+                              height: nodeHeight,
+                              strokeWidth: mode === "bar" ? 1 : 3,
+                            }}
+                            animate={{
+                              x: node.x0 + margin.left,
+                              y: node.y0 + margin.top,
+                              width: nodeWidth,
+                              height: nodeHeight,
+                              strokeWidth: mode === "bar" ? 1 : 3,
+                            }}
+                            transition={transition}
+                            fill={nodeColor}
+                            stroke={background}
+                          />
+                        )}
+                      </Group>
+                    );
+                  })}
+              </Group>
+            )}
+          </Treemap>
         )}
-      </Treemap>
-    </svg>
+      </motion.svg>
+
+      <motion.div
+        className="w-full border-white bg-black"
+        initial={{
+          width: mode === "bar" ? gapWidth : "0%",
+        }}
+        animate={{
+          width: mode === "bar" ? gapWidth : "0%",
+        }}
+        transition={{
+          ...transition,
+          delay: mode === "bar" ? 0.5 : 0,
+        }}
+      />
+    </div>
   );
 }
