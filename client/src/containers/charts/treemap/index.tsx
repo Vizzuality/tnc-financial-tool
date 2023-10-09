@@ -86,6 +86,7 @@ export type TreemapProps = {
   percentage: number;
   width: number;
   height: number;
+  delay: number;
 };
 
 export default function TreemapChart({
@@ -93,10 +94,11 @@ export default function TreemapChart({
   percentage,
   width: parentWidth,
   height: parentHeight,
+  delay,
 }: TreemapProps) {
   const widthScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [0, parentWidth ?? 200],
+    range: [0, 1000 ?? 200],
   });
 
   const width = useMemo(() => {
@@ -111,17 +113,18 @@ export default function TreemapChart({
   const yMax = height - margin.top - margin.bottom;
   const root = hierarchy(data).sort((a, b) => (b.value || 0) - (a.value || 0));
   const transition = {
-    duration: 0.3,
-    delay: mode === "bar" ? 0 : 0.5,
+    duration: 0.5,
   };
 
   return (
-    <div className="flex w-full">
+    <div
+      className="flex w-full"
+      style={{
+        height,
+      }}
+    >
       <motion.svg
-        initial={{
-          width,
-          height,
-        }}
+        layout
         animate={{
           width,
           height,
@@ -151,8 +154,6 @@ export default function TreemapChart({
                         {node.depth === 1 && (
                           <motion.rect
                             initial={{
-                              x: node.x0 + margin.left,
-                              y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
                               strokeWidth: mode === "bar" ? 1 : 3,
@@ -181,14 +182,14 @@ export default function TreemapChart({
       <motion.div
         className="w-full border-white bg-black"
         initial={{
-          width: mode === "bar" ? gapWidth : "0%",
+          width: 0,
         }}
         animate={{
           width: mode === "bar" ? gapWidth : "0%",
         }}
         transition={{
-          ...transition,
-          delay: mode === "bar" ? 0.5 : 0,
+          duration: mode === "bar" ? 0.5 : 0,
+          delay: mode === "bar" ? delay + 0.5 : 0,
         }}
       />
     </div>
