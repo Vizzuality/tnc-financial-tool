@@ -58,7 +58,7 @@ const Home = (): JSX.Element => {
           {DATA.map((d, i) => (
             <motion.div
               key={d.id}
-              layout
+              layout="position"
               className={cn({
                 "relative col-span-12 md:col-span-3": true,
                 "md:col-span-12": mode === "bar",
@@ -68,19 +68,17 @@ const Home = (): JSX.Element => {
                 ease: "easeInOut",
               }}
             >
-              <div className="flex w-full">
-                <ParentSize>
-                  {({ width, height }) => (
-                    <TreemapChart
-                      mode={mode}
-                      percentage={d.percentage}
-                      width={width}
-                      height={height}
-                      delay={i * 0.1}
-                    />
-                  )}
-                </ParentSize>
-              </div>
+              <ParentSize className="w-full">
+                {({ width, height }) => (
+                  <TreemapChart
+                    mode={mode}
+                    percentage={d.percentage}
+                    width={width}
+                    height={height}
+                    delay={i * 0.1}
+                  />
+                )}
+              </ParentSize>
             </motion.div>
           ))}
         </div>

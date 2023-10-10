@@ -98,7 +98,7 @@ export default function TreemapChart({
 }: TreemapProps) {
   const widthScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [0, 1000 ?? 200],
+    range: [0, parentWidth ?? 200],
   });
 
   const width = useMemo(() => {
@@ -124,11 +124,12 @@ export default function TreemapChart({
       }}
     >
       <motion.svg
-        layout
         animate={{
           width,
           height,
         }}
+        width={width}
+        height={height}
         transition={transition}
       >
         {!!parentWidth && !!parentHeight && (
@@ -154,6 +155,8 @@ export default function TreemapChart({
                         {node.depth === 1 && (
                           <motion.rect
                             initial={{
+                              x: node.x0 + margin.left,
+                              y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
                               strokeWidth: mode === "bar" ? 1 : 3,
