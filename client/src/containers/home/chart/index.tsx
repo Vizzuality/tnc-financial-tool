@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 import { Country } from "@/types/country";
 
-import { BACKGROUND, DRIVERS_COLORS, LABEL_MARGIN } from "@/constants/charts";
+import { BACKGROUND, DRIVERS_COLORS, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
 type DataProps = { id: string; size: number; parent: string | null };
 
@@ -25,6 +25,7 @@ export type ChartProps = {
   width: number;
   height: number;
   delay: number;
+  absoluteWidthScale: ReturnType<typeof scaleLinear<number>>;
 };
 
 export default function Chart({
@@ -34,6 +35,7 @@ export default function Chart({
   width: parentWidth,
   height: parentHeight,
   delay,
+  absoluteWidthScale,
 }: ChartProps) {
   const DATA = useMemo(() => {
     const D = [
@@ -60,7 +62,10 @@ export default function Chart({
 
   const widthScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [0, parentWidth - LABEL_MARGIN ?? 200],
+    range: [
+      0,
+      absoluteWidthScale(data.available + data.needed) * parentWidth - LABEL_MARGIN ?? 200,
+    ],
   });
 
   const width = useMemo(() => {
@@ -74,26 +79,31 @@ export default function Chart({
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
   const root = hierarchy(DATA).sort((a, b) => (b.value || 0) - (a.value || 0));
-  const transition = {
-    duration: 0.5,
-  };
 
   return (
     <div className="relative flex w-full">
       <motion.div
         className="absolute left-0 top-0 flex items-center justify-center"
+        initial={{
+          x: mode === "tree" ? width / 2 : LABEL_MARGIN - 10,
+          y: mode === "tree" ? height : height / 2,
+        }}
         animate={{
           x: mode === "tree" ? width / 2 : LABEL_MARGIN - 10,
           y: mode === "tree" ? height : height / 2,
         }}
-        transition={transition}
+        transition={TRANSITION}
       >
         <motion.h2
+          initial={{
+            x: mode === "tree" ? "-50%" : "-100%",
+            y: mode === "tree" ? 5 : "-50%",
+          }}
           animate={{
             x: mode === "tree" ? "-50%" : "-100%",
             y: mode === "tree" ? 5 : "-50%",
           }}
-          transition={transition}
+          transition={TRANSITION}
         >
           {data.name}
         </motion.h2>
@@ -107,7 +117,7 @@ export default function Chart({
         }}
         width={width}
         height={height}
-        transition={transition}
+        transition={TRANSITION}
       >
         {!!parentWidth && !!parentHeight && (
           <Treemap<typeof DATA>
@@ -151,7 +161,7 @@ export default function Chart({
                               height: nodeHeight,
                               strokeWidth: mode === "bar" ? 0 : 3,
                             }}
-                            transition={transition}
+                            transition={TRANSITION}
                             fill={nodeColor}
                             stroke={BACKGROUND}
                           />
@@ -176,8 +186,8 @@ export default function Chart({
           x: LABEL_MARGIN,
         }}
         transition={{
-          duration: mode === "bar" ? 0.5 : 0,
-          delay: mode === "bar" ? delay + 0.5 : 0,
+          duration: mode === "bar" ? TRANSITION.duration : 0,
+          delay: mode === "bar" ? delay + TRANSITION.duration : 0,
         }}
       />
     </div>

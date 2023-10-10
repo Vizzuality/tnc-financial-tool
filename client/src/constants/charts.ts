@@ -1,6 +1,6 @@
 export const BACKGROUND = "#FFF";
 
-export const LABEL_MARGIN = 100;
+export const LABEL_MARGIN = 80;
 
 export const DRIVERS_COLORS = [
   {
@@ -28,3 +28,8 @@ export const DRIVERS_COLORS = [
     color: "#81C784",
   },
 ];
+
+export const TRANSITION = {
+  duration: 0.75,
+  ease: "easeInOut",
+};
