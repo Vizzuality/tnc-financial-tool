@@ -73,7 +73,7 @@ export default function Chart({
   }, [mode, percentage, widthScale]);
 
   const gapWidth = widthScale(1 - percentage);
-  const height = mode === "bar" ? 50 : 200;
+  const height = mode === "bar" ? 40 : 200;
 
   const margin = defaultMargin;
   const xMax = width - margin.left - margin.right;
