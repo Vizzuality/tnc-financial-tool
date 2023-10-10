@@ -5,83 +5,21 @@ import { Treemap, hierarchy, stratify, treemapSquarify, treemapSlice } from "@vi
 import { scaleLinear, scaleOrdinal } from "@visx/scale";
 import { motion } from "framer-motion";
 
-export const background = "#FFF";
+import { Country } from "@/types/country";
 
-export const COLORS = [
-  {
-    id: "treemap",
-    color: background,
-  },
-  {
-    id: "private",
-    color: "#FFD54F",
-  },
-  {
-    id: "public",
-    color: "#FFA96A",
-  },
-  {
-    id: "philantropy",
-    color: "#62B5F6",
-  },
-  {
-    id: "international-aid",
-    color: "#7886CB",
-  },
-  {
-    id: "environmental",
-    color: "#81C784",
-  },
-];
+import { BACKGROUND, DRIVERS_COLORS, LABEL_MARGIN } from "@/constants/charts";
 
 type DataProps = { id: string; size: number; parent: string | null };
 
-const DATA = [
-  {
-    id: "treemap",
-    parent: null,
-    size: 0,
-  },
-  {
-    id: "private",
-    parent: "treemap",
-    size: 500,
-  },
-  {
-    id: "public",
-    parent: "treemap",
-    size: 200,
-  },
-  {
-    id: "philantropy",
-    parent: "treemap",
-    size: 100,
-  },
-  {
-    id: "international-aid",
-    parent: "treemap",
-    size: 50,
-  },
-  {
-    id: "environmental",
-    parent: "treemap",
-    size: 150,
-  },
-] satisfies DataProps[];
-
-const colorScale2 = scaleOrdinal<string, string>({
-  domain: COLORS.map((d) => d.id),
-  range: COLORS.map((d) => d.color),
+const colorScale = scaleOrdinal<string, string>({
+  domain: DRIVERS_COLORS.map((d) => d.id),
+  range: DRIVERS_COLORS.map((d) => d.color),
 });
-
-const data = stratify<DataProps>()
-  .id((d) => d.id)
-  .parentId((d) => d.parent)(DATA)
-  .sum((d) => d.size ?? 0);
 
 const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
-export type TreemapProps = {
+export type ChartProps = {
+  data: Country;
   mode: "tree" | "bar";
   percentage: number;
   width: number;
@@ -89,16 +27,40 @@ export type TreemapProps = {
   delay: number;
 };
 
-export default function TreemapChart({
+export default function Chart({
+  data,
   mode,
   percentage,
   width: parentWidth,
   height: parentHeight,
   delay,
-}: TreemapProps) {
+}: ChartProps) {
+  const DATA = useMemo(() => {
+    const D = [
+      {
+        id: "treemap",
+        size: 0,
+        parent: null,
+      },
+      ...data.drivers.map(
+        (d) =>
+          ({
+            id: d.source,
+            size: data.available * d.cost,
+            parent: "treemap",
+          }) as DataProps,
+      ),
+    ];
+
+    return stratify<DataProps>()
+      .id((d) => d.id)
+      .parentId((d) => d.parent)(D)
+      .sum((d) => d.size ?? 0);
+  }, [data]);
+
   const widthScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [0, parentWidth ?? 200],
+    range: [0, parentWidth - LABEL_MARGIN ?? 200],
   });
 
   const width = useMemo(() => {
@@ -111,20 +73,35 @@ export default function TreemapChart({
   const margin = defaultMargin;
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
-  const root = hierarchy(data).sort((a, b) => (b.value || 0) - (a.value || 0));
+  const root = hierarchy(DATA).sort((a, b) => (b.value || 0) - (a.value || 0));
   const transition = {
     duration: 0.5,
   };
 
   return (
-    <div
-      className="flex w-full"
-      style={{
-        height,
-      }}
-    >
+    <div className="relative flex w-full">
+      <motion.div
+        className="absolute left-0 top-0 flex items-center justify-center"
+        animate={{
+          x: mode === "tree" ? width / 2 : LABEL_MARGIN - 10,
+          y: mode === "tree" ? height : height / 2,
+        }}
+        transition={transition}
+      >
+        <motion.h2
+          animate={{
+            x: mode === "tree" ? "-50%" : "-100%",
+            y: mode === "tree" ? 5 : "-50%",
+          }}
+          transition={transition}
+        >
+          {data.name}
+        </motion.h2>
+      </motion.div>
+
       <motion.svg
         animate={{
+          x: mode === "tree" ? 0 : LABEL_MARGIN,
           width,
           height,
         }}
@@ -133,7 +110,7 @@ export default function TreemapChart({
         transition={transition}
       >
         {!!parentWidth && !!parentHeight && (
-          <Treemap<typeof data>
+          <Treemap<typeof DATA>
             top={margin.top}
             root={root}
             size={[xMax, yMax]}
@@ -143,12 +120,18 @@ export default function TreemapChart({
             {(treemap) => (
               <Group>
                 {treemap
+                  .sort((a, b) => {
+                    return (
+                      DRIVERS_COLORS.findIndex((c) => a.data.data.id === c.id) -
+                      DRIVERS_COLORS.findIndex((c) => b.data.data.id === c.id)
+                    );
+                  })
                   .descendants()
                   .reverse()
                   .map((node) => {
                     const nodeWidth = node.x1 - node.x0;
                     const nodeHeight = node.y1 - node.y0;
-                    const nodeColor = colorScale2(node.data.data.id);
+                    const nodeColor = colorScale(node.data.data.id);
 
                     return (
                       <Group key={`node-${node.data.data.id}`}>
@@ -159,18 +142,18 @@ export default function TreemapChart({
                               y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
-                              strokeWidth: mode === "bar" ? 1 : 3,
+                              strokeWidth: mode === "bar" ? 0 : 3,
                             }}
                             animate={{
                               x: node.x0 + margin.left,
                               y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
-                              strokeWidth: mode === "bar" ? 1 : 3,
+                              strokeWidth: mode === "bar" ? 0 : 3,
                             }}
                             transition={transition}
                             fill={nodeColor}
-                            stroke={background}
+                            stroke={BACKGROUND}
                           />
                         )}
                       </Group>
@@ -183,12 +166,14 @@ export default function TreemapChart({
       </motion.svg>
 
       <motion.div
-        className="w-full border-white bg-black"
+        className="w-full border-white bg-red-500"
         initial={{
           width: 0,
+          x: LABEL_MARGIN,
         }}
         animate={{
           width: mode === "bar" ? gapWidth : "0%",
+          x: LABEL_MARGIN,
         }}
         transition={{
           duration: mode === "bar" ? 0.5 : 0,
