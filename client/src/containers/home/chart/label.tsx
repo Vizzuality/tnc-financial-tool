@@ -7,6 +7,7 @@ import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
 export type ChartLabelProps = {
   data: Country;
+  index: number;
   mode: "drivers" | "gap" | "opportunities";
   parentWidth: number;
   parentHeight: number;

@@ -20,6 +20,7 @@ const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
 export type ChartDriversProps = {
   data: Country;
+  index: number;
   mode: "drivers" | "gap" | "opportunities";
   parentWidth: number;
   parentHeight: number;

@@ -1,30 +1,28 @@
 import { scaleLinear } from "@visx/scale";
-import { motion } from "framer-motion";
 
 import { Country } from "@/types/country";
 
-import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
+import { LABEL_MARGIN } from "@/constants/charts";
 
-import Drivers from "@/containers/home/chart/drivers";
+import ChartDrivers from "@/containers/home/chart/drivers";
+import ChartGap from "@/containers/home/chart/gap";
 import ChartLabel from "@/containers/home/chart/label";
 
 export type ChartProps = {
   data: Country;
+  index: number;
   mode: "drivers" | "gap" | "opportunities";
-  percentage: number;
   width: number;
   height: number;
-  delay: number;
   absoluteWidthScale: ReturnType<typeof scaleLinear<number>>;
 };
 
 export default function Chart({
   data,
+  index,
   mode,
-  percentage,
   width: parentWidth,
   height: parentHeight,
-  delay,
   absoluteWidthScale,
 }: ChartProps) {
   const widthScale = scaleLinear<number>({
@@ -35,19 +33,19 @@ export default function Chart({
     ],
   });
 
-  const gapWidth = widthScale(1 - percentage);
-
   return (
     <div className="relative flex w-full">
       <ChartLabel
         data={data}
+        index={index}
         mode={mode}
         parentWidth={parentWidth}
         parentHeight={parentHeight}
         widthScale={widthScale}
       />
 
-      <Drivers
+      <ChartDrivers
+        index={index}
         data={data}
         mode={mode}
         parentWidth={parentWidth}
@@ -55,20 +53,13 @@ export default function Chart({
         widthScale={widthScale}
       />
 
-      <motion.div
-        className="w-full border-white bg-red-300"
-        initial={{
-          width: 0,
-          x: LABEL_MARGIN,
-        }}
-        animate={{
-          width: mode === "gap" ? gapWidth : "0%",
-          x: LABEL_MARGIN,
-        }}
-        transition={{
-          duration: mode !== "drivers" ? TRANSITION.duration : 0,
-          delay: mode !== "drivers" ? delay + TRANSITION.duration : 0,
-        }}
+      <ChartGap
+        index={index}
+        data={data}
+        mode={mode}
+        parentWidth={parentWidth}
+        parentHeight={parentHeight}
+        widthScale={widthScale}
       />
     </div>
   );

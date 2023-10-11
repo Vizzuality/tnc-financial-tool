@@ -55,11 +55,10 @@ const Home = (): JSX.Element => {
                   {({ width, height }) => (
                     <Chart
                       mode={mode}
+                      index={i}
                       data={d}
-                      percentage={d.available / (d.needed + d.available)}
                       width={width}
                       height={height}
-                      delay={i * 0.1}
                       absoluteWidthScale={widthScale}
                     />
                   )}
