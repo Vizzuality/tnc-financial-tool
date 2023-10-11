@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 import { Group } from "@visx/group";
 import { Treemap, hierarchy, stratify, treemapSquarify, treemapSlice } from "@visx/hierarchy";
@@ -18,21 +18,21 @@ const colorScale = scaleOrdinal<string, string>({
 
 const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
-export type DriversProps = {
+export type ChartDriversProps = {
   data: Country;
   mode: "drivers" | "gap" | "opportunities";
-  width: number;
-  height: number;
+  parentWidth: number;
+  parentHeight: number;
   widthScale: ReturnType<typeof scaleLinear<number>>;
 };
 
-export default function Drivers({
+export default function ChartDrivers({
   data,
   mode,
-  width: parentWidth,
-  height: parentHeight,
+  parentWidth,
+  parentHeight,
   widthScale,
-}: DriversProps) {
+}: ChartDriversProps) {
   // Data
   const DATA = useMemo(() => {
     const D = [
