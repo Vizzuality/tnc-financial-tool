@@ -7,6 +7,7 @@ import { LABEL_MARGIN } from "@/constants/charts";
 import ChartDrivers from "@/containers/home/chart/drivers";
 import ChartGap from "@/containers/home/chart/gap";
 import ChartLabel from "@/containers/home/chart/label";
+import ChartProvider from "@/containers/home/chart/provider";
 
 export type ChartProps = {
   data: Country;
@@ -25,42 +26,28 @@ export default function Chart({
   height: parentHeight,
   absoluteWidthScale,
 }: ChartProps) {
+  const max = absoluteWidthScale(data.available + data.needed) * parentWidth - LABEL_MARGIN;
   const widthScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [
-      0,
-      absoluteWidthScale(data.available + data.needed) * parentWidth - LABEL_MARGIN ?? 200,
-    ],
+    range: [0, max > 0 ? max : 10],
   });
 
   return (
     <div className="relative flex w-full">
-      <ChartLabel
+      <ChartProvider
         data={data}
         index={index}
         mode={mode}
-        parentWidth={parentWidth}
-        parentHeight={parentHeight}
+        width={parentWidth}
+        height={parentHeight}
         widthScale={widthScale}
-      />
+      >
+        <ChartLabel />
 
-      <ChartDrivers
-        index={index}
-        data={data}
-        mode={mode}
-        parentWidth={parentWidth}
-        parentHeight={parentHeight}
-        widthScale={widthScale}
-      />
+        <ChartDrivers />
 
-      <ChartGap
-        index={index}
-        data={data}
-        mode={mode}
-        parentWidth={parentWidth}
-        parentHeight={parentHeight}
-        widthScale={widthScale}
-      />
+        <ChartGap />
+      </ChartProvider>
     </div>
   );
 }

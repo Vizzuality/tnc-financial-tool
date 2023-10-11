@@ -2,12 +2,12 @@ import { useMemo } from "react";
 
 import { Group } from "@visx/group";
 import { Treemap, hierarchy, stratify, treemapSquarify, treemapSlice } from "@visx/hierarchy";
-import { scaleLinear, scaleOrdinal } from "@visx/scale";
+import { scaleOrdinal } from "@visx/scale";
 import { motion } from "framer-motion";
 
-import { Country } from "@/types/country";
-
 import { BACKGROUND, DRIVERS_COLORS, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
+
+import { useChartContext } from "@/containers/home/chart/provider";
 
 type DataProps = { id: string; size: number; parent: string | null };
 
@@ -18,22 +18,10 @@ const colorScale = scaleOrdinal<string, string>({
 
 const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
-export type ChartDriversProps = {
-  data: Country;
-  index: number;
-  mode: "drivers" | "gap" | "opportunities";
-  parentWidth: number;
-  parentHeight: number;
-  widthScale: ReturnType<typeof scaleLinear<number>>;
-};
+export default function ChartDrivers() {
+  // Context
+  const { data, mode, width: parentWidth, height: parentHeight, widthScale } = useChartContext();
 
-export default function ChartDrivers({
-  data,
-  mode,
-  parentWidth,
-  parentHeight,
-  widthScale,
-}: ChartDriversProps) {
   // Data
   const DATA = useMemo(() => {
     const D = [

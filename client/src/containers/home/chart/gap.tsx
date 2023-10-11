@@ -1,20 +1,11 @@
-import { scaleLinear } from "@visx/scale";
 import { motion } from "framer-motion";
-
-import { Country } from "@/types/country";
 
 import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
-export type ChartGapProps = {
-  data: Country;
-  index: number;
-  mode: "drivers" | "gap" | "opportunities";
-  parentWidth: number;
-  parentHeight: number;
-  widthScale: ReturnType<typeof scaleLinear<number>>;
-};
+import { useChartContext } from "@/containers/home/chart/provider";
 
-export default function ChartGap({ data, index, mode, widthScale }: ChartGapProps) {
+export default function ChartGap() {
+  const { data, index, mode, widthScale } = useChartContext();
   const percentage = data.available / (data.needed + data.available);
   const gapWidth = widthScale(1 - percentage);
 

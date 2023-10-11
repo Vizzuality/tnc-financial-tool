@@ -1,20 +1,11 @@
-import { scaleLinear } from "@visx/scale";
 import { motion } from "framer-motion";
-
-import { Country } from "@/types/country";
 
 import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
-export type ChartLabelProps = {
-  data: Country;
-  index: number;
-  mode: "drivers" | "gap" | "opportunities";
-  parentWidth: number;
-  parentHeight: number;
-  widthScale: ReturnType<typeof scaleLinear<number>>;
-};
+import { useChartContext } from "@/containers/home/chart/provider";
 
-export default function ChartLabel({ data, mode }: ChartLabelProps) {
+export default function ChartLabel() {
+  const { data, mode } = useChartContext();
   const width = 200;
   const height = mode !== "drivers" ? 40 : 200;
 
