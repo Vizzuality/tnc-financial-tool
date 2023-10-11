@@ -21,7 +21,7 @@ const widthScale = scaleLinear<number>({
 });
 
 const Home = (): JSX.Element => {
-  const [mode, setMode] = useState<"tree" | "bar">("tree");
+  const [mode, setMode] = useState<"drivers" | "gap" | "opportunities">("drivers");
 
   return (
     <div className="container h-screen w-full">
@@ -36,8 +36,8 @@ const Home = (): JSX.Element => {
         <div
           className={cn({
             "relative grid grid-cols-12 gap-x-5": true,
-            "gap-y-20": mode === "tree",
-            "gap-y-5": mode !== "tree",
+            "gap-y-20": mode === "drivers",
+            "gap-y-5": mode !== "drivers",
           })}
         >
           {COUNTRIES.map((d, i) => (
@@ -46,7 +46,7 @@ const Home = (): JSX.Element => {
               layout="position"
               className={cn({
                 "relative col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3": true,
-                "sm:col-span-12 md:col-span-12 lg:col-span-12": mode !== "tree",
+                "sm:col-span-12 md:col-span-12 lg:col-span-12": mode !== "drivers",
               })}
               transition={TRANSITION}
             >
@@ -69,15 +69,32 @@ const Home = (): JSX.Element => {
           ))}
         </div>
 
-        <Button
-          className="fixed bottom-20 right-20 z-10"
-          size="lg"
-          onClick={() => {
-            setMode(mode === "tree" ? "bar" : "tree");
-          }}
-        >
-          Toogle {mode === "tree" ? "Bar" : "Tree"}
-        </Button>
+        <div className="fixed bottom-20 right-20 z-10 flex space-x-5">
+          <Button
+            size="lg"
+            onClick={() => {
+              setMode("drivers");
+            }}
+          >
+            Drivers
+          </Button>
+          <Button
+            size="lg"
+            onClick={() => {
+              setMode("gap");
+            }}
+          >
+            Gap
+          </Button>
+          <Button
+            size="lg"
+            onClick={() => {
+              setMode("opportunities");
+            }}
+          >
+            Opportunities
+          </Button>
+        </div>
       </div>
     </div>
   );
