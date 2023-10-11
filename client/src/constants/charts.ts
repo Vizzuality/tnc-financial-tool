@@ -30,6 +30,6 @@ export const DRIVERS_COLORS = [
 ];
 
 export const TRANSITION = {
-  duration: 0.75,
+  duration: 0.5,
   ease: "easeInOut",
 };

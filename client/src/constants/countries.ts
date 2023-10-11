@@ -5,8 +5,8 @@ export const COUNTRIES = [
     id: 1,
     name: "Brazil",
     iso3: "BRA",
-    available: 19,
-    needed: 1,
+    available: 1,
+    needed: 19,
     available_by_GDP: 0.0004,
     needed_by_GDP: 0.00001,
 
@@ -184,8 +184,8 @@ export const COUNTRIES = [
     id: 6,
     name: "Mexico",
     iso3: "MEX",
-    available: 1,
-    needed: 7,
+    available: 3,
+    needed: 6,
 
     available_by_GDP: 0.0004,
     needed_by_GDP: 0.00001,
@@ -212,8 +212,8 @@ export const COUNTRIES = [
     id: 7,
     name: "Russia",
     iso3: "RUS",
-    available: 1,
-    needed: 5,
+    available: 3,
+    needed: 2,
 
     available_by_GDP: 0.0004,
     needed_by_GDP: 0.00001,

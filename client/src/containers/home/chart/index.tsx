@@ -176,7 +176,7 @@ export default function Chart({
       </motion.svg>
 
       <motion.div
-        className="w-full border-white bg-red-500"
+        className="w-full border-white bg-red-300"
         initial={{
           width: 0,
           x: LABEL_MARGIN,

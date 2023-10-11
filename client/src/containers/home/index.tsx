@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 
 const widthScale = scaleLinear<number>({
   domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
-  range: [0, 1],
+  range: [0.05, 1],
 });
 
 const Home = (): JSX.Element => {
