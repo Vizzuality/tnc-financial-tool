@@ -1,7 +1,7 @@
 "use client";
 
-import Hero from "@/containers/home/hero";
 import Content from "@/containers/home/content";
+import Hero from "@/containers/home/hero";
 
 const Home = (): JSX.Element => {
   return (

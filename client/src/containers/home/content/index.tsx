@@ -25,12 +25,13 @@ const Content = (): JSX.Element => {
 
   return (
     <>
-      <div className="sticky top-0 container w-full">
+      <div className="container sticky top-0 w-full">
         <div className="space-y-10 py-20">
           <header className="space-y-5">
-            <h1 className="font-bold text-sm uppercase tracking-widest">Funding drivers</h1>
-            <p className="text-2lg max-w-xl">
-              <span className="text-grass">Public domestic funding</span> is the largest driver of NCS funding in 6 of 8 focus countries.
+            <h1 className="text-sm font-bold uppercase tracking-widest">Funding drivers</h1>
+            <p className="max-w-xl text-2lg">
+              <span className="text-grass">Public domestic funding</span> is the largest driver of
+              NCS funding in 6 of 8 focus countries.
             </p>
           </header>
 
