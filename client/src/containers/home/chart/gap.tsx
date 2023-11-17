@@ -11,7 +11,7 @@ export default function ChartGap() {
 
   return (
     <motion.div
-      className="w-full border-white bg-red-300"
+      className="flex w-full items-center space-x-1 border-x-4 border-gray-900"
       initial={{
         width: 0,
         x: LABEL_MARGIN,
@@ -24,6 +24,24 @@ export default function ChartGap() {
         duration: mode !== "drivers" ? TRANSITION.duration : 0,
         delay: mode !== "drivers" ? index * 0.1 + TRANSITION.duration : 0,
       }}
-    />
+    >
+      <div className="h-full w-full bg-[#E23248]" />
+
+      <motion.span
+        className="whitespace-nowrap"
+        initial={{
+          opacity: 0,
+          x: -10,
+        }}
+        animate={{
+          opacity: mode === "gap" ? 1 : 0,
+          x: mode === "gap" ? 0 : -10,
+        }}
+        transition={{
+          duration: mode !== "drivers" ? TRANSITION.duration : 0,
+          delay: mode !== "drivers" ? index * 0.1 + TRANSITION.duration : 0,
+        }}
+      >{`$ ${data.needed}`}</motion.span>
+    </motion.div>
   );
 }

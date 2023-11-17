@@ -105,14 +105,14 @@ export default function ChartDrivers() {
                             y: node.y0 + margin.top,
                             width: nodeWidth,
                             height: nodeHeight,
-                            strokeWidth: mode !== "drivers" ? 0 : 3,
+                            strokeWidth: mode !== "drivers" ? 1 : 3,
                           }}
                           animate={{
                             x: node.x0 + margin.left,
                             y: node.y0 + margin.top,
                             width: nodeWidth,
                             height: nodeHeight,
-                            strokeWidth: mode !== "drivers" ? 0 : 3,
+                            strokeWidth: mode !== "drivers" ? 1 : 3,
                           }}
                           transition={TRANSITION}
                           fill={nodeColor}

@@ -23,6 +23,7 @@ export default function ChartLabel() {
       transition={TRANSITION}
     >
       <motion.h2
+        className="text-sm"
         initial={{
           x: mode === "drivers" ? "-50%" : "-100%",
           y: mode === "drivers" ? 5 : "-50%",
