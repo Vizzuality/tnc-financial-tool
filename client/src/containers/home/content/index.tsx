@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { ParentSize } from "@visx/responsive";
 import { scaleLinear } from "@visx/scale";
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 import { cn } from "@/lib/classnames";
 
@@ -12,8 +12,6 @@ import { TRANSITION } from "@/constants/charts";
 import { COUNTRIES } from "@/constants/countries";
 
 import Chart from "@/containers/home/chart";
-
-import { Button } from "@/components/ui/button";
 
 const widthScale = scaleLinear<number>({
   domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
@@ -23,9 +21,26 @@ const widthScale = scaleLinear<number>({
 const Content = (): JSX.Element => {
   const [mode, setMode] = useState<"drivers" | "gap" | "opportunities">("drivers");
 
+  const scrollRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latestScrollY: number) => {
+    if (mode !== "drivers" && latestScrollY < 0.3333) {
+      setMode("drivers");
+    }
+    if (mode !== "gap" && latestScrollY > 0.3333 && latestScrollY < 0.6666) {
+      setMode("gap");
+    }
+    if (mode !== "opportunities" && latestScrollY > 0.6666) {
+      setMode("opportunities");
+    }
+  });
+
   return (
     <>
-      <div className="container sticky top-0 w-full">
+      <div className="container sticky top-0 h-[100svh] w-full">
         <div className="space-y-10 py-20">
           <header className="space-y-5">
             <h1 className="text-sm font-bold uppercase tracking-widest">Funding drivers</h1>
@@ -69,37 +84,10 @@ const Content = (): JSX.Element => {
               </motion.div>
             ))}
           </div>
-
-          <div className="fixed bottom-20 right-20 z-10 flex space-x-5">
-            <Button
-              size="lg"
-              onClick={() => {
-                setMode("drivers");
-              }}
-            >
-              Drivers
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => {
-                setMode("gap");
-              }}
-            >
-              Gap
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => {
-                setMode("opportunities");
-              }}
-            >
-              Opportunities
-            </Button>
-          </div>
         </div>
       </div>
 
-      <div className="h-[300svh]" />
+      <div ref={scrollRef} className="-mt-[100svh] h-[600svh]" />
     </>
   );
 };
