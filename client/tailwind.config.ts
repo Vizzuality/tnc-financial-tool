@@ -45,6 +45,18 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gray: {
+          100: '#F6F5F2',
+          400: '#CAC9C8',
+          600: '#7D898D',
+          800: '#263C44',
+          900: '#1E2D3A',
+        },
+        grass: "#60CBA5",
+        sky: "#4FB8DA",
+        sand: "#F0EDE8",
+        ocean: "#2078AC",
+        climate: "#277F6C",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -64,6 +76,59 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontSize: {
+        sm: [
+          '0.875rem',
+          {
+            lineHeight: '1.125rem',
+          },
+        ],
+        base: [
+          '1rem',
+          {
+            lineHeight: '1.5rem',
+          },
+        ],
+        lg: [
+          '1.25rem',
+          {
+            lineHeight: '2rem',
+          },
+        ],
+        '2lg': [
+          '1.5rem',
+          {
+            lineHeight: '2.25rem',
+          },
+        ],
+        xl: [
+          '2rem',
+          {
+            lineHeight: '2.5rem',
+          },
+        ],
+        '2xl': [
+          '2.5rem',
+          {
+            lineHeight: '3rem',
+          },
+        ],
+        '3xl': [
+          '3rem',
+          {
+            lineHeight: '3.5rem',
+          },
+        ],
+        '4xl': [
+          '3.5rem',
+          {
+            lineHeight: '4rem',
+          },
+        ],
+      },
+      fontFamily: {
+        "space-grotesk": ["var(--font-space-grotesk)"],
       },
     },
   },

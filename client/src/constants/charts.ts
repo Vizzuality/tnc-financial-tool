@@ -1,4 +1,4 @@
-export const BACKGROUND = "#FFF";
+export const BACKGROUND = "#1E2D3A";
 
 export const LABEL_MARGIN = 80;
 
@@ -9,23 +9,23 @@ export const DRIVERS_COLORS = [
   },
   {
     id: "private",
-    color: "#FFD54F",
+    color: "#F0EDE8",
   },
   {
     id: "public",
-    color: "#FFA96A",
+    color: "#60CBA5",
   },
   {
     id: "philantropy",
-    color: "#62B5F6",
+    color: "#277F6C",
   },
   {
     id: "international",
-    color: "#7886CB",
+    color: "#2078AC",
   },
   {
     id: "environmental",
-    color: "#81C784",
+    color: "#4FB8DA",
   },
 ];
 
