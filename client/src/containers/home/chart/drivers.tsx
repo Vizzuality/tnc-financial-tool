@@ -70,6 +70,7 @@ export default function ChartDrivers() {
       }}
       width={width}
       height={height}
+      className="relative z-10"
       transition={TRANSITION}
     >
       {!!parentWidth && !!parentHeight && (

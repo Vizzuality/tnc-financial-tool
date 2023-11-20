@@ -7,6 +7,7 @@ import { LABEL_MARGIN } from "@/constants/charts";
 import ChartDrivers from "@/containers/home/chart/drivers";
 import ChartGap from "@/containers/home/chart/gap";
 import ChartLabel from "@/containers/home/chart/label";
+import ChartOpportunities from "@/containers/home/chart/opportunities";
 import ChartProvider from "@/containers/home/chart/provider";
 
 export type ChartProps = {
@@ -47,6 +48,8 @@ export default function Chart({
         <ChartDrivers />
 
         <ChartGap />
+
+        <ChartOpportunities />
       </ChartProvider>
     </div>
   );

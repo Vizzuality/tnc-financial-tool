@@ -69,8 +69,8 @@ const Content = (): JSX.Element => {
         <div className="container sticky top-0 h-[100svh] w-full">
           <div className="space-y-10 py-20">
             <div className="relative h-32">
-              <AnimatePresence>
-                {mode === "drivers" && (
+              <AnimatePresence mode="wait">
+                {mode === "drivers" ? (
                   <motion.header
                     {...variants}
                     key="header-drivers"
@@ -86,9 +86,9 @@ const Content = (): JSX.Element => {
                       </p>
                     </div>
                   </motion.header>
-                )}
+                ) : null}
 
-                {mode === "gap" && (
+                {mode === "gap" ? (
                   <motion.header
                     {...variants}
                     key="header-gap"
@@ -126,12 +126,12 @@ const Content = (): JSX.Element => {
                       </button>
                     </div>
                   </motion.header>
-                )}
+                ) : null}
 
-                {mode === "opportunities" && (
+                {mode === "opportunities" ? (
                   <motion.header
                     {...variants}
-                    key="header-oppotunities"
+                    key="header-opportunities"
                     className="absolute left-0 top-0 flex w-full justify-between"
                   >
                     <div className="space-y-5">
@@ -145,7 +145,7 @@ const Content = (): JSX.Element => {
                       </p>
                     </div>
                   </motion.header>
-                )}
+                ) : null}
               </AnimatePresence>
             </div>
 
