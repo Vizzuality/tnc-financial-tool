@@ -40,9 +40,28 @@ export const COUNTRIES = [
     opportunities: [
       {
         id: 1,
-        name: "Amazon",
-        cost: 0.0001,
-        source: "environmental",
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
+      },
+      {
+        id: 5,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
       },
     ],
   },
@@ -85,10 +104,24 @@ export const COUNTRIES = [
 
     opportunities: [
       {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+      {
         id: 1,
-        name: "Amazon",
-        cost: 0.0001,
-        source: "environmental",
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
       },
     ],
   },
@@ -112,9 +145,23 @@ export const COUNTRIES = [
     opportunities: [
       {
         id: 1,
-        name: "Amazon",
-        cost: 0.0001,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
         source: "environmental",
+      },
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
       },
     ],
   },
@@ -140,7 +187,28 @@ export const COUNTRIES = [
       },
     ],
 
-    opportunities: [],
+    opportunities: [
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
+      },
+      {
+        id: 1,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+    ],
   },
   {
     id: 5,
@@ -179,6 +247,28 @@ export const COUNTRIES = [
         source: "philantropy",
       },
     ],
+    opportunities: [
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 1,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
+      },
+    ],
   },
   {
     id: 6,
@@ -204,6 +294,28 @@ export const COUNTRIES = [
       {
         id: 3,
         cost: 0.1,
+        source: "international",
+      },
+    ],
+    opportunities: [
+      {
+        id: 1,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
         source: "international",
       },
     ],
@@ -245,6 +357,23 @@ export const COUNTRIES = [
         source: "philantropy",
       },
     ],
+    opportunities: [
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 1,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+    ],
   },
   {
     id: 8,
@@ -283,5 +412,32 @@ export const COUNTRIES = [
         source: "philantropy",
       },
     ],
+
+    opportunities: [
+      {
+        id: 3,
+        name: "Reduce subsidy for urea-based fertilizer for better nutrient mgmt.",
+        source: "international",
+      },
+      {
+        id: 2,
+        name: "Reform policy to better allocate the CAMPA fund & EFT",
+        source: "philantropy",
+      },
+      {
+        id: 4,
+        name: "Create a baseline and credit compliance carbon market",
+        source: "public",
+      },
+      {
+        id: 1,
+        name: "Build sustainable forestry & agroforestry markets",
+        source: "public",
+      },
+    ],
   },
 ] as Country[];
+
+export const MAX_OPPORTUNITIES = Math.max(
+  ...COUNTRIES.map((country) => country.opportunities.length),
+);

@@ -30,7 +30,7 @@ export default function ChartGap() {
         }}
         transition={{
           duration: mode !== "drivers" ? TRANSITION.duration : 0,
-          delay: mode === "gap" ? index * 0.1 + TRANSITION.duration : 0,
+          delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
         }}
       >
         <div className="h-full w-full bg-[#E23248]" />
@@ -47,7 +47,7 @@ export default function ChartGap() {
           }}
           transition={{
             duration: mode !== "drivers" ? TRANSITION.duration : 0,
-            delay: mode === "gap" ? index * 0.1 + TRANSITION.duration : 0,
+            delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
           }}
         >{`$ ${data.needed}`}</motion.span>
       </motion.div>

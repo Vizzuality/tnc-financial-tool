@@ -1,5 +1,7 @@
 "use client";
 
+import { COUNTRIES } from "@/constants/countries";
+
 const Hero = (): JSX.Element => {
   return (
     <div className="container w-full">
@@ -7,8 +9,8 @@ const Hero = (): JSX.Element => {
         <section className="space-y-6">
           <h1 className="max-w-4xl text-2xl">
             A global study by <span className="font-semibold">The Nature Conservancy</span> has
-            identified <span className="text-sky">funding opportunities for NCS</span> in 8
-            countries.
+            identified <span className="text-sky">funding opportunities for NCS</span> in{" "}
+            {COUNTRIES.length} countries.
           </h1>
 
           <div className="grid grid-cols-2 gap-20">
