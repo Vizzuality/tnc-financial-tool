@@ -62,71 +62,77 @@ export default function ChartDrivers() {
   const root = hierarchy(DATA).sort((a, b) => (b.value || 0) - (a.value || 0));
 
   return (
-    <motion.svg
-      animate={{
-        x: mode === "drivers" ? 0 : LABEL_MARGIN,
-        width,
-        height,
+    <div
+      style={{
+        pointerEvents: mode === "drivers" ? "auto" : "none",
       }}
-      width={width}
-      height={height}
-      className="relative z-10"
-      transition={TRANSITION}
     >
-      {!!parentWidth && !!parentHeight && (
-        <Treemap<typeof DATA>
-          top={margin.top}
-          root={root}
-          size={[xMax, yMax]}
-          tile={mode !== "drivers" ? treemapSlice : treemapSquarify}
-          round
-        >
-          {(treemap) => (
-            <Group>
-              {treemap
-                .sort((a, b) => {
-                  return (
-                    DRIVERS_COLORS.findIndex((c) => a.data.data.id === c.id) -
-                    DRIVERS_COLORS.findIndex((c) => b.data.data.id === c.id)
-                  );
-                })
-                .descendants()
-                .reverse()
-                .map((node) => {
-                  const nodeWidth = node.x1 - node.x0;
-                  const nodeHeight = node.y1 - node.y0;
-                  const nodeColor = colorScale(node.data.data.id);
+      <motion.svg
+        animate={{
+          x: mode === "drivers" ? 0 : LABEL_MARGIN,
+          width,
+          height,
+        }}
+        width={width}
+        height={height}
+        className="relative z-10"
+        transition={TRANSITION}
+      >
+        {!!parentWidth && !!parentHeight && (
+          <Treemap<typeof DATA>
+            top={margin.top}
+            root={root}
+            size={[xMax, yMax]}
+            tile={mode !== "drivers" ? treemapSlice : treemapSquarify}
+            round
+          >
+            {(treemap) => (
+              <Group>
+                {treemap
+                  .sort((a, b) => {
+                    return (
+                      DRIVERS_COLORS.findIndex((c) => a.data.data.id === c.id) -
+                      DRIVERS_COLORS.findIndex((c) => b.data.data.id === c.id)
+                    );
+                  })
+                  .descendants()
+                  .reverse()
+                  .map((node) => {
+                    const nodeWidth = node.x1 - node.x0;
+                    const nodeHeight = node.y1 - node.y0;
+                    const nodeColor = colorScale(node.data.data.id);
 
-                  return (
-                    <Group key={`node-${node.data.data.id}`}>
-                      {node.depth === 1 && (
-                        <motion.rect
-                          initial={{
-                            x: node.x0 + margin.left,
-                            y: node.y0 + margin.top,
-                            width: nodeWidth,
-                            height: nodeHeight,
-                            strokeWidth: mode !== "drivers" ? 1 : 3,
-                          }}
-                          animate={{
-                            x: node.x0 + margin.left,
-                            y: node.y0 + margin.top,
-                            width: nodeWidth,
-                            height: nodeHeight,
-                            strokeWidth: mode !== "drivers" ? 1 : 3,
-                          }}
-                          transition={TRANSITION}
-                          fill={nodeColor}
-                          stroke={BACKGROUND}
-                        />
-                      )}
-                    </Group>
-                  );
-                })}
-            </Group>
-          )}
-        </Treemap>
-      )}
-    </motion.svg>
+                    return (
+                      <Group key={`node-${node.data.data.id}`}>
+                        {node.depth === 1 && (
+                          <motion.rect
+                            initial={{
+                              x: node.x0 + margin.left,
+                              y: node.y0 + margin.top,
+                              width: nodeWidth,
+                              height: nodeHeight,
+                              strokeWidth: mode !== "drivers" ? 1 : 3,
+                            }}
+                            animate={{
+                              x: node.x0 + margin.left,
+                              y: node.y0 + margin.top,
+                              width: nodeWidth,
+                              height: nodeHeight,
+                              strokeWidth: mode !== "drivers" ? 1 : 3,
+                            }}
+                            transition={TRANSITION}
+                            fill={nodeColor}
+                            stroke={BACKGROUND}
+                          />
+                        )}
+                      </Group>
+                    );
+                  })}
+              </Group>
+            )}
+          </Treemap>
+        )}
+      </motion.svg>
+    </div>
   );
 }

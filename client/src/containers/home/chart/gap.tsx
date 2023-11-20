@@ -16,6 +16,7 @@ export default function ChartGap() {
       style={{
         width: width - LABEL_MARGIN,
         left: LABEL_MARGIN,
+        pointerEvents: mode === "gap" ? "auto" : "none",
       }}
     >
       <motion.div

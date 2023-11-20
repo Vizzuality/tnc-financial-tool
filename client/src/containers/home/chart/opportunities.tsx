@@ -14,6 +14,7 @@ export default function ChartOpportunities() {
       style={{
         width: width - LABEL_MARGIN,
         left: LABEL_MARGIN,
+        pointerEvents: mode === "opportunities" ? "auto" : "none",
       }}
     >
       <motion.div
