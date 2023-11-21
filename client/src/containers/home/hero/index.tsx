@@ -2,7 +2,7 @@ import { COUNTRIES } from "@/constants/countries";
 
 const Hero = (): JSX.Element => {
   return (
-    <div className="container flex lg:min-h-screen w-full flex-col items-center justify-center">
+    <div className="container flex w-full flex-col items-center justify-center lg:min-h-screen">
       <div className="space-y-10 py-10 lg:py-40">
         <section className="space-y-6">
           <h1 className="max-w-4xl text-2lg md:text-2xl">
@@ -11,7 +11,7 @@ const Hero = (): JSX.Element => {
             {COUNTRIES.length} countries.
           </h1>
 
-          <div className="grid lg:grid-cols-2 lg:gap-20 gap-5">
+          <div className="grid gap-5 lg:grid-cols-2 lg:gap-20">
             <div className="space-y-5">
               <div>
                 <p>
