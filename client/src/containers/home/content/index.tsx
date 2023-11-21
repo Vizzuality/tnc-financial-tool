@@ -12,6 +12,7 @@ import { TRANSITION } from "@/constants/charts";
 import { COUNTRIES } from "@/constants/countries";
 
 import Chart from "@/containers/home/chart";
+import Legend from "@/containers/home/content/legend";
 
 const absoluteGlobalScale = scaleLinear<number>({
   domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
@@ -190,6 +191,8 @@ const Content = (): JSX.Element => {
                 </motion.div>
               ))}
             </div>
+
+            <Legend mode={mode} />
           </div>
         </div>
         <div className="h-[600svh]" />
