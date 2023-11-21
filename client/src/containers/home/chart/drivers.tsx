@@ -44,7 +44,7 @@ export default function ChartDrivers() {
         (d) =>
           ({
             id: d.source,
-            size: data.available * d.cost,
+            size: data.available_max * d.cost,
             parent: "treemap",
           }) as DataProps,
       ),
@@ -58,8 +58,8 @@ export default function ChartDrivers() {
 
   const percentage =
     unit === "absolute"
-      ? data.available / (data.needed + data.available)
-      : data.available_by_GDP / (data.needed_by_GDP + data.available_by_GDP);
+      ? data.available_max / (data.needed + data.available_max)
+      : data.available_by_GDP_max / (data.needed_by_GDP + data.available_by_GDP_max);
 
   // Size
   const width = useMemo(() => {

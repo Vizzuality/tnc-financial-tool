@@ -12,12 +12,12 @@ import { COUNTRIES } from "@/constants/countries";
 import ChartNeeds from "@/containers/home/chart/needs-mobile";
 
 const absoluteGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_max + d.needed))],
   range: [0.05, 1],
 });
 
 const relativeGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP + d.needed_by_GDP))],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP_max + d.needed_by_GDP))],
   range: [0.05, 1],
 });
 

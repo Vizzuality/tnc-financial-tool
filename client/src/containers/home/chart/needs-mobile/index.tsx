@@ -49,7 +49,7 @@ export default function ChartNeeds({
         (d) =>
           ({
             id: d.source,
-            size: data.available * d.cost,
+            size: data.available_max * d.cost,
             parent: "treemap",
           }) as DataProps,
       ),
@@ -67,7 +67,9 @@ export default function ChartNeeds({
   }, [data]);
 
   const v =
-    unit === "absolute" ? data.needed + data.available : data.available_by_GDP + data.needed_by_GDP;
+    unit === "absolute"
+      ? data.needed + data.available_max
+      : data.available_by_GDP_max + data.needed_by_GDP;
   const widthScale = unit !== "absolute" ? relativeScale : absoluteScale;
 
   // Size

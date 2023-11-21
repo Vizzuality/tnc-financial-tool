@@ -43,7 +43,7 @@ export default function ChartDrivers({
         (d) =>
           ({
             id: d.source,
-            size: data.available * d.cost,
+            size: data.available_max * d.cost,
             parent: "treemap",
           }) as DataProps,
       ),

@@ -20,8 +20,8 @@ export const DRIVERS = [
     color: "#4FB8DA",
   },
   {
-    id: "philantropy",
-    name: "Philantropy",
+    id: "philanthropic",
+    name: "Philanthropic",
     color: "#277F6C",
   },
 ];

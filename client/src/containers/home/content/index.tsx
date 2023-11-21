@@ -15,13 +15,13 @@ import Chart from "@/containers/home/chart";
 import Legend from "@/containers/home/content/legend";
 
 const absoluteGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
-  range: [0.05, 1],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_max + d.needed))],
+  range: [0.15, 1],
 });
 
 const relativeGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP + d.needed_by_GDP))],
-  range: [0.05, 1],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP_max + d.needed_by_GDP))],
+  range: [0.15, 1],
 });
 
 const variants = {
@@ -157,7 +157,7 @@ const Content = (): JSX.Element => {
 
             <div
               className={cn({
-                "relative grid grid-cols-12 gap-x-5": true,
+                "relative grid grid-cols-10 gap-x-5": true,
                 "gap-y-20": mode === "drivers",
                 "gap-y-5": mode !== "drivers",
               })}
@@ -167,7 +167,7 @@ const Content = (): JSX.Element => {
                   key={d.id}
                   layout="position"
                   className={cn({
-                    "relative col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3": true,
+                    "relative col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2": true,
                     "sm:col-span-12 md:col-span-12 lg:col-span-12": mode !== "drivers",
                   })}
                   transition={TRANSITION}
