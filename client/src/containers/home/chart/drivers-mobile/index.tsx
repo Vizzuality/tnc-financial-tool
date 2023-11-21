@@ -20,17 +20,17 @@ const colorScale = scaleOrdinal<string, string>({
 
 const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
-interface ChartNeedsProps {
+interface ChartDriversProps {
   width: number;
   height: number;
   data: Country;
 }
 
-export default function ChartNeeds({
+export default function ChartDrivers({
   width: parentWidth,
   height: parentHeight,
   data,
-}: ChartNeedsProps) {
+}: ChartDriversProps) {
   // Data
   const DATA = useMemo(() => {
     const D = [
