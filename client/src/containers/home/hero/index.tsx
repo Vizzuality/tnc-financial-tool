@@ -1,10 +1,8 @@
-"use client";
-
 import { COUNTRIES } from "@/constants/countries";
 
 const Hero = (): JSX.Element => {
   return (
-    <div className="container w-full">
+    <div className="container flex min-h-screen w-full flex-col items-center justify-center">
       <div className="space-y-10 py-40">
         <section className="space-y-6">
           <h1 className="max-w-4xl text-2xl">

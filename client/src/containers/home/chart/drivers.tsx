@@ -20,7 +20,17 @@ const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
 export default function ChartDrivers() {
   // Context
-  const { data, mode, width: parentWidth, height: parentHeight, widthScale } = useChartContext();
+  const {
+    data,
+    mode,
+    unit,
+    width: parentWidth,
+    height: parentHeight,
+    absoluteScale,
+    relativeScale,
+  } = useChartContext();
+
+  const widthScale = unit !== "absolute" ? relativeScale : absoluteScale;
 
   // Data
   const DATA = useMemo(() => {
@@ -46,7 +56,10 @@ export default function ChartDrivers() {
       .sum((d) => d.size ?? 0);
   }, [data]);
 
-  const percentage = data.available / (data.needed + data.available);
+  const percentage =
+    unit === "absolute"
+      ? data.available / (data.needed + data.available)
+      : data.available_by_GDP / (data.needed_by_GDP + data.available_by_GDP);
 
   // Size
   const width = useMemo(() => {

@@ -14,23 +14,37 @@ export type ChartProps = {
   data: Country;
   index: number;
   mode: "drivers" | "gap" | "opportunities";
+  unit: "absolute" | "relative";
   width: number;
   height: number;
-  absoluteWidthScale: ReturnType<typeof scaleLinear<number>>;
+  absoluteGlobalScale: ReturnType<typeof scaleLinear<number>>;
+  relativeGlobalScale: ReturnType<typeof scaleLinear<number>>;
 };
 
 export default function Chart({
   data,
   index,
+  unit,
   mode,
   width: parentWidth,
   height: parentHeight,
-  absoluteWidthScale,
+  absoluteGlobalScale,
+  relativeGlobalScale,
 }: ChartProps) {
-  const max = absoluteWidthScale(data.available + data.needed) * parentWidth - LABEL_MARGIN;
-  const widthScale = scaleLinear<number>({
+  // Absolute
+  const maxAbsolute =
+    absoluteGlobalScale(data.available + data.needed) * parentWidth - LABEL_MARGIN;
+  const absoluteScale = scaleLinear<number>({
     domain: [0, 1],
-    range: [0, max > 0 ? max : 10],
+    range: [0, maxAbsolute > 0 ? maxAbsolute : 10],
+  });
+
+  // Relative
+  const maxRelative =
+    relativeGlobalScale(data.available_by_GDP + data.needed_by_GDP) * parentWidth - LABEL_MARGIN;
+  const relativeScale = scaleLinear<number>({
+    domain: [0, 1],
+    range: [0, maxRelative > 0 ? maxRelative : 10],
   });
 
   return (
@@ -39,9 +53,11 @@ export default function Chart({
         data={data}
         index={index}
         mode={mode}
+        unit={unit}
         width={parentWidth}
         height={parentHeight}
-        widthScale={widthScale}
+        absoluteScale={absoluteScale}
+        relativeScale={relativeScale}
       >
         <ChartLabel />
 

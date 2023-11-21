@@ -8,18 +8,25 @@ interface ChartProviderProps extends PropsWithChildren {
   data: Country;
   index: number;
   mode: string;
+  unit: "absolute" | "relative";
   width: number;
   height: number;
-  widthScale: ReturnType<typeof scaleLinear<number>>;
+  absoluteScale: ReturnType<typeof scaleLinear<number>>;
+  relativeScale: ReturnType<typeof scaleLinear<number>>;
 }
 
 const ChartContext = createContext<ChartProviderProps>({
   data: {} as Country,
   index: 0,
   mode: "",
+  unit: "absolute",
   width: 0,
   height: 0,
-  widthScale: scaleLinear<number>({
+  absoluteScale: scaleLinear<number>({
+    domain: [0, 1],
+    range: [0, 1],
+  }),
+  relativeScale: scaleLinear<number>({
     domain: [0, 1],
     range: [0, 1],
   }),
@@ -31,13 +38,17 @@ const ChartProvider: React.FC<ChartProviderProps> = ({
   data,
   index,
   mode,
+  unit,
   width,
   height,
-  widthScale,
+  absoluteScale,
+  relativeScale,
   children,
 }) => {
   return (
-    <ChartContext.Provider value={{ data, index, mode, width, height, widthScale }}>
+    <ChartContext.Provider
+      value={{ data, index, mode, unit, width, height, absoluteScale, relativeScale }}
+    >
       {children}
     </ChartContext.Provider>
   );

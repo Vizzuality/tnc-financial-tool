@@ -5,8 +5,12 @@ import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 import { useChartContext } from "@/containers/home/chart/provider";
 
 export default function ChartGap() {
-  const { data, index, mode, width, widthScale } = useChartContext();
-  const percentage = data.available / (data.needed + data.available);
+  const { data, mode, unit, width, absoluteScale, relativeScale } = useChartContext();
+  const percentage =
+    unit === "absolute"
+      ? data.available / (data.needed + data.available)
+      : data.available_by_GDP / (data.needed_by_GDP + data.available_by_GDP);
+  const widthScale = unit !== "absolute" ? relativeScale : absoluteScale;
   const margin = widthScale(percentage);
   const gapWidth = widthScale(1 - percentage);
 
@@ -30,7 +34,7 @@ export default function ChartGap() {
         }}
         transition={{
           duration: mode !== "drivers" ? TRANSITION.duration : 0,
-          delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
+          // delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
         }}
       >
         <div className="h-full w-full bg-[#E23248]" />
@@ -47,9 +51,11 @@ export default function ChartGap() {
           }}
           transition={{
             duration: mode !== "drivers" ? TRANSITION.duration : 0,
-            delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
+            // delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
           }}
-        >{`$ ${data.needed}`}</motion.span>
+        >
+          {unit === "absolute" ? `$ ${data.needed}` : `${data.needed_by_GDP} %`}
+        </motion.span>
       </motion.div>
     </div>
   );

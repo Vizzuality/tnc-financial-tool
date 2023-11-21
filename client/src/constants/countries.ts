@@ -7,8 +7,8 @@ export const COUNTRIES = [
     iso3: "BRA",
     available: 1,
     needed: 19,
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.2,
 
     drivers: [
       {
@@ -71,8 +71,8 @@ export const COUNTRIES = [
     iso3: "CAN",
     available: 15,
     needed: 3,
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.3,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {
@@ -131,8 +131,8 @@ export const COUNTRIES = [
     iso3: "CHN",
     available: 8,
     needed: 8,
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.8,
+    needed_by_GDP: 0.9,
 
     drivers: [
       {
@@ -171,8 +171,8 @@ export const COUNTRIES = [
     iso3: "IND",
     available: 5,
     needed: 7,
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {
@@ -217,8 +217,8 @@ export const COUNTRIES = [
     available: 1,
     needed: 9,
 
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {
@@ -277,8 +277,8 @@ export const COUNTRIES = [
     available: 3,
     needed: 6,
 
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {
@@ -327,8 +327,8 @@ export const COUNTRIES = [
     available: 3,
     needed: 2,
 
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {
@@ -382,8 +382,8 @@ export const COUNTRIES = [
     available: 1,
     needed: 3,
 
-    available_by_GDP: 0.0004,
-    needed_by_GDP: 0.00001,
+    available_by_GDP: 0.4,
+    needed_by_GDP: 0.1,
 
     drivers: [
       {

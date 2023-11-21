@@ -13,8 +13,13 @@ import { COUNTRIES } from "@/constants/countries";
 
 import Chart from "@/containers/home/chart";
 
-const widthScale = scaleLinear<number>({
+const absoluteGlobalScale = scaleLinear<number>({
   domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
+  range: [0.05, 1],
+});
+
+const relativeGlobalScale = scaleLinear<number>({
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP + d.needed_by_GDP))],
   range: [0.05, 1],
 });
 
@@ -171,11 +176,13 @@ const Content = (): JSX.Element => {
                       {({ width, height }) => (
                         <Chart
                           mode={mode}
+                          unit={unit}
                           index={i}
                           data={d}
                           width={width}
                           height={height}
-                          absoluteWidthScale={widthScale}
+                          absoluteGlobalScale={absoluteGlobalScale}
+                          relativeGlobalScale={relativeGlobalScale}
                         />
                       )}
                     </ParentSize>
