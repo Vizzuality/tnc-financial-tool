@@ -1,14 +1,23 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
 import { scaleLinear } from "@visx/scale";
 
 import { Country } from "@/types/country";
 
 import { LABEL_MARGIN } from "@/constants/charts";
 
-import ChartDrivers from "@/containers/home/chart/drivers";
 import ChartGap from "@/containers/home/chart/gap";
-import ChartLabel from "@/containers/home/chart/label";
 import ChartOpportunities from "@/containers/home/chart/opportunities";
 import ChartProvider from "@/containers/home/chart/provider";
+
+const ChartDrivers = dynamic(() => import("@/containers/home/chart/drivers"), {
+  ssr: false,
+});
+const ChartLabel = dynamic(() => import("@/containers/home/chart/label"), {
+  ssr: false,
+});
 
 export type ChartProps = {
   data: Country;

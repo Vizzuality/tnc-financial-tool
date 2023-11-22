@@ -34,7 +34,7 @@ interface LegendProps {
 
 const Legend = ({ mode }: LegendProps): JSX.Element => {
   return (
-    <div className="relative pt-20">
+    <div className="container absolute bottom-10 right-0 flex justify-end pt-20">
       <AnimatePresence>
         {mode === "drivers" && (
           <motion.footer {...variants}>

@@ -50,12 +50,13 @@ const Content = (): JSX.Element => {
     <>
       <div ref={scrollRef} className="relative">
         <div className="container sticky top-0 h-[100svh] w-full">
-          <div className="w-full py-20">
+          <div className="w-full py-10 2xl:py-20">
             <Header mode={mode} unit={unit} onUnitChange={setUnit} />
 
             <div
               className={cn({
-                "relative grid grid-cols-10 gap-x-5 pt-10": true,
+                "relative grid w-full grid-cols-[180px_180px_180px_180px_180px] justify-between 2xl:pt-10":
+                  true,
                 "gap-y-20": mode === "drivers",
                 "gap-y-5": mode !== "drivers",
               })}
@@ -65,8 +66,8 @@ const Content = (): JSX.Element => {
                   key={d.id}
                   layout="position"
                   className={cn({
-                    "relative col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2": true,
-                    "sm:col-span-12 md:col-span-12 lg:col-span-12": mode !== "drivers",
+                    "relative col-span-1": true,
+                    "col-span-12": mode !== "drivers",
                   })}
                   transition={TRANSITION}
                 >

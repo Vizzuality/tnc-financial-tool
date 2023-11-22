@@ -20,7 +20,7 @@ export default function ChartOpportunities() {
 
   return (
     <div
-      className="absolute left-0 top-0 flex h-full w-full items-center"
+      className="absolute left-0 top-0 z-0 flex h-full w-full items-center"
       style={{
         width: width - LABEL_MARGIN,
         left: LABEL_MARGIN,
@@ -35,7 +35,7 @@ export default function ChartOpportunities() {
           return (
             <motion.div
               key={d.id}
-              className="relative"
+              className="relative flex items-center "
               initial={{
                 width: `${(1 / MAX_OPPORTUNITIES) * 100 - 1}%`,
                 scaleY: 0,
@@ -51,29 +51,33 @@ export default function ChartOpportunities() {
               }}
             >
               <motion.div
-                className="absolute left-0 top-0 z-10 h-full w-full border-4 px-2"
-                style={{
-                  borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
-                  opacity: getOpacity(d.cost),
-                }}
+                className="relative flex items-center overflow-hidden"
                 animate={{
-                  height: hover ? 50 : 0,
-                }}
-                transition={{
-                  duration: TRANSITION.duration / 2,
-                }}
-              />
-
-              <motion.div
-                className="relative z-0 flex w-full items-center overflow-hidden px-3 text-[11px] leading-none"
-                animate={{
-                  height: hover ? 48 : 0,
+                  height: hover ? 50 : 8,
                 }}
                 transition={{
                   duration: TRANSITION.duration / 2,
                 }}
               >
-                <span className="block">{d.name}</span>
+                <div
+                  className="absolute left-0 top-1/2 z-10 h-full w-full -translate-y-1/2 border-4 px-2"
+                  style={{
+                    borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
+                    opacity: getOpacity(d.cost),
+                  }}
+                />
+
+                <motion.div
+                  className="relative z-0 flex w-full items-center overflow-hidden px-3 text-[11px] leading-none"
+                  animate={{
+                    opacity: hover ? 1 : 0,
+                  }}
+                  transition={{
+                    duration: TRANSITION.duration / 2,
+                  }}
+                >
+                  <span className="block">{d.name}</span>
+                </motion.div>
               </motion.div>
             </motion.div>
           );

@@ -1,11 +1,14 @@
+"use client";
+
 import { useMemo } from "react";
 
 import { Group } from "@visx/group";
 import { Treemap, hierarchy, stratify, treemapSquarify, treemapSlice } from "@visx/hierarchy";
 import { scaleOrdinal } from "@visx/scale";
 import { motion } from "framer-motion";
+import { useMediaMatch } from "rooks";
 
-import { BACKGROUND, DRIVERS_COLORS, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
+import { BACKGROUND, DRIVERS_COLORS, HEIGHT, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
 import { useChartContext } from "@/containers/home/chart/provider";
 
@@ -66,7 +69,10 @@ export default function ChartDrivers() {
     if (mode === "opportunities") return 0;
     return mode !== "drivers" ? widthScale(percentage) : 180;
   }, [mode, percentage, widthScale]);
-  const height = mode !== "drivers" ? 25 : 180;
+
+  const xxl = useMediaMatch("(min-height: 820px)");
+  const h = xxl ? HEIGHT.xxl : HEIGHT.default;
+  const height = mode !== "drivers" ? h : 180;
   const margin = defaultMargin;
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
@@ -88,7 +94,7 @@ export default function ChartDrivers() {
         }}
         width={width}
         height={height}
-        className="relative z-10"
+        className="relative z-20"
         transition={TRANSITION}
       >
         {!!parentWidth && !!parentHeight && (

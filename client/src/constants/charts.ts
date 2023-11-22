@@ -2,6 +2,11 @@ import { DRIVERS } from "@/constants/drivers";
 
 export const BACKGROUND = "#1E2D3A";
 
+export const HEIGHT = {
+  default: 25,
+  xxl: 35,
+};
+
 export const LABEL_MARGIN = 80;
 
 export const DRIVERS_COLORS = [

@@ -1,13 +1,18 @@
-import { motion } from "framer-motion";
+"use client";
 
-import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
+import { motion } from "framer-motion";
+import { useMediaMatch } from "rooks";
+
+import { HEIGHT, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
 import { useChartContext } from "@/containers/home/chart/provider";
 
 export default function ChartLabel() {
   const { data, mode } = useChartContext();
   const width = 180;
-  const height = mode !== "drivers" ? 25 : 180;
+  const xxl = useMediaMatch("(min-height: 820px)");
+  const h = xxl ? HEIGHT.xxl : HEIGHT.default;
+  const height = mode !== "drivers" ? h : 180;
 
   return (
     <motion.div

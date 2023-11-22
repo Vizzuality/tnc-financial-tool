@@ -22,7 +22,7 @@ export default function ChartGap() {
 
   return (
     <div
-      className="absolute left-0 top-0 h-full w-full border-l border-gray-900"
+      className="absolute left-0 top-0 z-10 h-full w-full border-l border-gray-900"
       style={{
         width: width - LABEL_MARGIN,
         left: LABEL_MARGIN,

@@ -42,7 +42,7 @@ const Header = ({ mode, unit, onUnitChange }: HeaderProps): JSX.Element => {
             {...variants}
             className="absolute left-0 top-0 flex w-full justify-between"
           >
-            <div className="space-y-5">
+            <div className="space-y-2.5 2xl:space-y-5">
               <h1 className="text-sm font-bold uppercase tracking-widest">Funding drivers</h1>
               <p className="max-w-xl text-2lg">
                 <span className="text-grass">Public domestic funding</span> is the largest driver of
@@ -57,7 +57,7 @@ const Header = ({ mode, unit, onUnitChange }: HeaderProps): JSX.Element => {
             {...variants}
             className="absolute left-0 top-0 flex w-full items-end justify-between"
           >
-            <div className="space-y-5">
+            <div className="space-y-2.5 2xl:space-y-5">
               <h1 className="text-sm font-bold uppercase tracking-widest">Funding needs</h1>
               <p className="max-w-xl text-2lg">
                 Half of focus countries have <span className="text-red-600">less than 5%</span> of
@@ -98,7 +98,7 @@ const Header = ({ mode, unit, onUnitChange }: HeaderProps): JSX.Element => {
             {...variants}
             className="absolute left-0 top-0 flex w-full justify-between"
           >
-            <div className="space-y-5">
+            <div className="space-y-2.5 2xl:space-y-5">
               <h1 className="text-sm font-bold uppercase tracking-widest">Funding opportunities</h1>
               <p className="max-w-4xl text-2lg">
                 Policy reforms, carbon markets, and nature-positive economies have the greatest
