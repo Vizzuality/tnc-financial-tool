@@ -1,4 +1,4 @@
-type Source = "public" | "private" | "international" | "environmental" | "philanthropic";
+export type Source = "public" | "private" | "international" | "environmental" | "philanthropic";
 
 export type Country = {
   id: number;

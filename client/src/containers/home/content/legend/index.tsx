@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 
+import { SOURCE_OPPORTUNIIES } from "@/constants/countries";
 import { DRIVERS } from "@/constants/drivers";
 
 const variants = {
@@ -34,9 +35,9 @@ interface LegendProps {
 const Legend = ({ mode }: LegendProps): JSX.Element => {
   return (
     <div className="relative pt-20">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {mode === "drivers" && (
-          <motion.footer {...variants} key="footer-drivers">
+          <motion.footer {...variants}>
             <ul className="flex space-x-5 pt-5">
               {DRIVERS.map((d) => (
                 <li key={d.id} className="flex items-center space-x-2">
@@ -54,7 +55,7 @@ const Legend = ({ mode }: LegendProps): JSX.Element => {
         )}
 
         {mode === "gap" && (
-          <motion.footer {...variants} key="footer-needs">
+          <motion.footer {...variants}>
             <ul className="flex space-x-5">
               {[
                 ...DRIVERS,
@@ -81,15 +82,13 @@ const Legend = ({ mode }: LegendProps): JSX.Element => {
         )}
 
         {mode === "opportunities" && (
-          <motion.footer
-            {...variants}
-            key="footer-opportunities"
-            className="flex w-full justify-end"
-          >
+          <motion.footer {...variants} className="flex w-full justify-end">
             <div className="space-y-2">
               <h3 className="text-right text-sm font-bold">Funding source and cost ($B):</h3>
               <ul className="flex flex-col items-end space-y-0">
-                {DRIVERS.map((d) => (
+                {DRIVERS.filter((d) => {
+                  return SOURCE_OPPORTUNIIES.find((s) => s === d.id);
+                }).map((d) => (
                   <li key={d.id} className="flex items-center space-x-2">
                     <span className="text-xs">{d.name}</span>
 

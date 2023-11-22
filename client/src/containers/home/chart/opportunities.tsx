@@ -11,6 +11,13 @@ export default function ChartOpportunities() {
   const [hover, setHover] = useState<boolean>(false); // [id, setHover
   const { index, mode, width, data } = useChartContext();
 
+  const getOpacity = (d: number) => {
+    if (d === 0) return 0.32;
+    if (d === 0.5) return 0.32;
+    if (d === 1) return 0.64;
+    if (d === 1.5) return 1;
+  };
+
   return (
     <div
       className="absolute left-0 top-0 flex h-full w-full items-center"
@@ -28,6 +35,7 @@ export default function ChartOpportunities() {
           return (
             <motion.div
               key={d.id}
+              className="relative"
               initial={{
                 width: `${(1 / MAX_OPPORTUNITIES) * 100 - 1}%`,
                 scaleY: 0,
@@ -43,9 +51,10 @@ export default function ChartOpportunities() {
               }}
             >
               <motion.div
-                className="flex h-12 w-full items-center overflow-hidden border-4 px-2 text-[11px] leading-none"
+                className="absolute left-0 top-0 z-10 h-full w-full border-4 px-2"
                 style={{
                   borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
+                  opacity: getOpacity(d.cost),
                 }}
                 animate={{
                   height: hover ? 50 : 0,
@@ -53,22 +62,18 @@ export default function ChartOpportunities() {
                 transition={{
                   duration: TRANSITION.duration / 2,
                 }}
+              />
+
+              <motion.div
+                className="relative z-0 flex w-full items-center overflow-hidden px-3 text-[11px] leading-none"
+                animate={{
+                  height: hover ? 48 : 0,
+                }}
+                transition={{
+                  duration: TRANSITION.duration / 2,
+                }}
               >
-                <motion.span
-                  className="block"
-                  animate={{
-                    opacity: mode === "opportunities" ? 1 : 0,
-                  }}
-                  transition={{
-                    duration: mode !== "drivers" ? TRANSITION.duration / 2 : 0,
-                    delay:
-                      mode === "opportunities"
-                        ? 0.1 + (index + i) * 0.05 + TRANSITION.duration / 2 + TRANSITION.duration
-                        : 0,
-                  }}
-                >
-                  {d.name}
-                </motion.span>
+                <span className="block">{d.name}</span>
               </motion.div>
             </motion.div>
           );

@@ -1,4 +1,4 @@
-import { Country } from "@/types/country";
+import { Country, Source } from "@/types/country";
 
 export const COUNTRIES = [
   {
@@ -563,6 +563,16 @@ export const COUNTRIES = [
   .sort((a, b) => {
     return b.available + b.needed - (a.available + a.needed);
   }) as Country[];
+
+// get unique sources rom opportunities
+export const SOURCE_OPPORTUNIIES = COUNTRIES.reduce((acc, country) => {
+  country.opportunities.forEach((opportunity) => {
+    if (!acc.includes(opportunity.source)) {
+      acc.push(opportunity.source);
+    }
+  });
+  return acc;
+}, [] as Source[]);
 
 export const MAX_OPPORTUNITIES = Math.max(
   ...COUNTRIES.map((country) => country.opportunities.length),
