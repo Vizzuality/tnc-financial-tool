@@ -1,7 +1,7 @@
 const Outro = (): JSX.Element => {
   return (
-    <div className="container flex w-full flex-col items-center justify-center lg:min-h-screen">
-      <div className="space-y-10 py-10 lg:py-40">
+    <div className="container flex w-full flex-col items-center justify-center">
+      <div className="space-y-10 py-10 lg:py-40 xl:py-60">
         <section className="space-y-6">
           <h1 className="max-w-4xl text-2lg md:text-2xl">
             The world is waking up to the <span className="font-semibold">potential of NCS</span>{" "}

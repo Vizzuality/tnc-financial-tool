@@ -38,6 +38,7 @@ export const COUNTRIES = [
         cost: 406.5618733333333,
         id: 5,
       },
+      // 713.62
     ],
     opportunities: [
       {
@@ -551,7 +552,17 @@ export const COUNTRIES = [
     ],
     opportunities: [],
   },
-] as Country[];
+]
+  .map((country) => {
+    return {
+      ...country,
+      available: (country.available_max + country.available_min) / 2,
+      available_by_GDP: (country.available_by_GDP_max + country.available_by_GDP_min) / 2,
+    };
+  })
+  .sort((a, b) => {
+    return b.available + b.needed - (a.available + a.needed);
+  }) as Country[];
 
 export const MAX_OPPORTUNITIES = Math.max(
   ...COUNTRIES.map((country) => country.opportunities.length),

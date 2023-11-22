@@ -33,7 +33,7 @@ export default function Chart({
 }: ChartProps) {
   // Absolute
   const maxAbsolute =
-    absoluteGlobalScale(data.available_max + data.needed) * parentWidth - LABEL_MARGIN;
+    absoluteGlobalScale(data.available + data.needed) * parentWidth - LABEL_MARGIN;
   const absoluteScale = scaleLinear<number>({
     domain: [0, 1],
     range: [0, maxAbsolute > 0 ? maxAbsolute : 10],
@@ -41,8 +41,7 @@ export default function Chart({
 
   // Relative
   const maxRelative =
-    relativeGlobalScale(data.available_by_GDP_max + data.needed_by_GDP) * parentWidth -
-    LABEL_MARGIN;
+    relativeGlobalScale(data.available_by_GDP + data.needed_by_GDP) * parentWidth - LABEL_MARGIN;
   const relativeScale = scaleLinear<number>({
     domain: [0, 1],
     range: [0, maxRelative > 0 ? maxRelative : 10],

@@ -33,11 +33,11 @@ interface LegendProps {
 
 const Legend = ({ mode }: LegendProps): JSX.Element => {
   return (
-    <div className="relative pt-10">
+    <div className="relative pt-20">
       <AnimatePresence mode="wait">
         {mode === "drivers" && (
           <motion.footer {...variants} key="footer-drivers">
-            <ul className="flex space-x-5">
+            <ul className="flex space-x-5 pt-5">
               {DRIVERS.map((d) => (
                 <li key={d.id} className="flex items-center space-x-2">
                   <div

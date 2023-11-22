@@ -10,8 +10,8 @@ export default function ChartGap() {
   const { data, mode, unit, width, absoluteScale, relativeScale } = useChartContext();
   const percentage =
     unit === "absolute"
-      ? data.available_max / (data.needed + data.available_max)
-      : data.available_by_GDP_max / (data.needed_by_GDP + data.available_by_GDP_max);
+      ? data.available / (data.needed + data.available)
+      : data.available_by_GDP / (data.needed_by_GDP + data.available_by_GDP);
   const widthScale = unit !== "absolute" ? relativeScale : absoluteScale;
   const margin = widthScale(percentage);
   const gapWidth = widthScale(1 - percentage);
@@ -22,7 +22,7 @@ export default function ChartGap() {
 
   return (
     <div
-      className="absolute left-0 top-0 h-full w-full border-l-4 border-gray-900"
+      className="absolute left-0 top-0 h-full w-full border-l border-gray-900"
       style={{
         width: width - LABEL_MARGIN,
         left: LABEL_MARGIN,

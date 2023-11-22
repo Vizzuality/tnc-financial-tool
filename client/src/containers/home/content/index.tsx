@@ -15,12 +15,12 @@ import Chart from "@/containers/home/chart";
 import Legend from "@/containers/home/content/legend";
 
 const absoluteGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_max + d.needed))],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
   range: [0.15, 1],
 });
 
 const relativeGlobalScale = scaleLinear<number>({
-  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP_max + d.needed_by_GDP))],
+  domain: [0, Math.max(...COUNTRIES.map((d) => d.available_by_GDP + d.needed_by_GDP))],
   range: [0.15, 1],
 });
 
@@ -73,7 +73,7 @@ const Content = (): JSX.Element => {
     <>
       <div ref={scrollRef} className="relative">
         <div className="container sticky top-0 h-[100svh] w-full">
-          <div className="space-y-10 py-20">
+          <div className="w-full py-20">
             <div className="relative h-32">
               <AnimatePresence mode="wait">
                 {mode === "drivers" && (
@@ -157,14 +157,12 @@ const Content = (): JSX.Element => {
 
             <div
               className={cn({
-                "relative grid grid-cols-10 gap-x-5": true,
+                "relative grid grid-cols-10 gap-x-5 pt-10": true,
                 "gap-y-20": mode === "drivers",
                 "gap-y-5": mode !== "drivers",
               })}
             >
-              {COUNTRIES.sort((a, b) => {
-                return b.available_max + b.needed - (a.available_max + a.needed);
-              }).map((d, i) => (
+              {COUNTRIES.map((d, i) => (
                 <motion.div
                   key={d.id}
                   layout="position"

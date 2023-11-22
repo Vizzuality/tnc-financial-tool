@@ -44,7 +44,7 @@ export default function ChartDrivers() {
         (d) =>
           ({
             id: d.source,
-            size: data.available_max * d.cost,
+            size: data.available * d.cost,
             parent: "treemap",
           }) as DataProps,
       ),
@@ -58,15 +58,15 @@ export default function ChartDrivers() {
 
   const percentage =
     unit === "absolute"
-      ? data.available_max / (data.needed + data.available_max)
-      : data.available_by_GDP_max / (data.needed_by_GDP + data.available_by_GDP_max);
+      ? data.available / (data.needed + data.available)
+      : data.available_by_GDP / (data.needed_by_GDP + data.available_by_GDP);
 
   // Size
   const width = useMemo(() => {
     if (mode === "opportunities") return 0;
-    return mode !== "drivers" ? widthScale(percentage) : 200;
+    return mode !== "drivers" ? widthScale(percentage) : 180;
   }, [mode, percentage, widthScale]);
-  const height = mode !== "drivers" ? 40 : 200;
+  const height = mode !== "drivers" ? 25 : 180;
   const margin = defaultMargin;
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
@@ -124,18 +124,17 @@ export default function ChartDrivers() {
                               y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
-                              strokeWidth: mode !== "drivers" ? 1 : 3,
                             }}
                             animate={{
                               x: node.x0 + margin.left,
                               y: node.y0 + margin.top,
                               width: nodeWidth,
                               height: nodeHeight,
-                              strokeWidth: mode !== "drivers" ? 1 : 3,
                             }}
                             transition={TRANSITION}
                             fill={nodeColor}
                             stroke={BACKGROUND}
+                            strokeWidth={1}
                           />
                         )}
                       </Group>

@@ -6,8 +6,8 @@ import { useChartContext } from "@/containers/home/chart/provider";
 
 export default function ChartLabel() {
   const { data, mode } = useChartContext();
-  const width = 200;
-  const height = mode !== "drivers" ? 40 : 200;
+  const width = 180;
+  const height = mode !== "drivers" ? 25 : 180;
 
   return (
     <motion.div

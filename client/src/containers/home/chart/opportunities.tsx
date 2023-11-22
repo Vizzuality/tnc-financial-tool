@@ -36,10 +36,13 @@ export default function ChartOpportunities() {
                   mode === "opportunities" ? 0.1 + (index + i) * 0.05 + TRANSITION.duration : 0,
               }}
             >
-              <div
+              <motion.div
                 className="flex h-12 w-full items-center overflow-hidden border-4 px-2 text-[11px] leading-none"
                 style={{
                   borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
+                }}
+                animate={{
+                  height: 0,
                 }}
               >
                 <motion.span
@@ -57,7 +60,7 @@ export default function ChartOpportunities() {
                 >
                   {d.name}
                 </motion.span>
-              </div>
+              </motion.div>
             </motion.div>
           );
         })}
