@@ -162,7 +162,9 @@ const Content = (): JSX.Element => {
                 "gap-y-5": mode !== "drivers",
               })}
             >
-              {COUNTRIES.map((d, i) => (
+              {COUNTRIES.sort((a, b) => {
+                return b.available_max + b.needed - (a.available_max + a.needed);
+              }).map((d, i) => (
                 <motion.div
                   key={d.id}
                   layout="position"

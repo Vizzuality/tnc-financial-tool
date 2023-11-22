@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import { useFormatCurrency, useFormatPercentage } from "@/lib/formats";
+
 import { LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 
 import { useChartContext } from "@/containers/home/chart/provider";
@@ -14,6 +16,10 @@ export default function ChartGap() {
   const margin = widthScale(percentage);
   const gapWidth = widthScale(1 - percentage);
 
+  // Formats
+  const { format: formatCurrency } = useFormatCurrency();
+  const { format: formatPercentage } = useFormatPercentage();
+
   return (
     <div
       className="absolute left-0 top-0 h-full w-full border-l-4 border-gray-900"
@@ -24,7 +30,7 @@ export default function ChartGap() {
       }}
     >
       <motion.div
-        className="absolute left-0 top-0 flex h-full w-full items-center space-x-1"
+        className="absolute left-0 top-0 flex h-full w-full items-center space-x-2"
         initial={{
           width: 0,
         }}
@@ -40,7 +46,7 @@ export default function ChartGap() {
         <div className="h-full w-full bg-[#E23248]" />
 
         <motion.span
-          className="whitespace-nowrap"
+          className="whitespace-nowrap text-sm"
           initial={{
             opacity: 0,
             x: -10,
@@ -54,7 +60,9 @@ export default function ChartGap() {
             // delay: mode === "gap" ? 0.1 + index * 0.05 + TRANSITION.duration : 0,
           }}
         >
-          {unit === "absolute" ? `$ ${data.needed}` : `${data.needed_by_GDP} %`}
+          {unit === "absolute"
+            ? `${formatCurrency(data.needed)}`
+            : `${formatPercentage(data.needed_by_GDP)}`}
         </motion.span>
       </motion.div>
     </div>
