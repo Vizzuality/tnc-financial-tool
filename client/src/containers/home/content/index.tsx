@@ -15,6 +15,8 @@ import Chart from "@/containers/home/chart";
 import Header from "@/containers/home/content/header";
 import Legend from "@/containers/home/content/legend";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 const absoluteGlobalScale = scaleLinear<number>({
   domain: [0, Math.max(...COUNTRIES.map((d) => d.available + d.needed))],
   range: [0.15, 1],
@@ -61,34 +63,36 @@ const Content = (): JSX.Element => {
                 "gap-y-5": mode !== "drivers",
               })}
             >
-              {COUNTRIES.map((d, i) => (
-                <motion.div
-                  key={d.id}
-                  layout="position"
-                  className={cn({
-                    "relative col-span-1": true,
-                    "col-span-12": mode !== "drivers",
-                  })}
-                  transition={TRANSITION}
-                >
-                  <div className="">
-                    <ParentSize className="w-full">
-                      {({ width, height }) => (
-                        <Chart
-                          mode={mode}
-                          unit={unit}
-                          index={i}
-                          data={d}
-                          width={width}
-                          height={height}
-                          absoluteGlobalScale={absoluteGlobalScale}
-                          relativeGlobalScale={relativeGlobalScale}
-                        />
-                      )}
-                    </ParentSize>
-                  </div>
-                </motion.div>
-              ))}
+              <TooltipProvider>
+                {COUNTRIES.map((d, i) => (
+                  <motion.div
+                    key={d.id}
+                    layout="position"
+                    className={cn({
+                      "relative col-span-1": true,
+                      "col-span-12": mode !== "drivers",
+                    })}
+                    transition={TRANSITION}
+                  >
+                    <div className="">
+                      <ParentSize className="w-full">
+                        {({ width, height }) => (
+                          <Chart
+                            mode={mode}
+                            unit={unit}
+                            index={i}
+                            data={d}
+                            width={width}
+                            height={height}
+                            absoluteGlobalScale={absoluteGlobalScale}
+                            relativeGlobalScale={relativeGlobalScale}
+                          />
+                        )}
+                      </ParentSize>
+                    </div>
+                  </motion.div>
+                ))}
+              </TooltipProvider>
             </div>
 
             <Legend mode={mode} />

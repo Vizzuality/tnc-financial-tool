@@ -11,6 +11,10 @@ import { LABEL_MARGIN } from "@/constants/charts";
 import ChartGap from "@/containers/home/chart/gap";
 import ChartOpportunities from "@/containers/home/chart/opportunities";
 import ChartProvider from "@/containers/home/chart/provider";
+import DriversTooltip from "@/containers/home/chart/tooltips/drivers";
+import NeedsTooltip from "@/containers/home/chart/tooltips/needs";
+
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ChartDrivers = dynamic(() => import("@/containers/home/chart/drivers"), {
   ssr: false,
@@ -40,6 +44,7 @@ export default function Chart({
   absoluteGlobalScale,
   relativeGlobalScale,
 }: ChartProps) {
+  // const [tooltip, setTooltip] = useState(false);
   // Absolute
   const maxAbsolute =
     absoluteGlobalScale(data.available + data.needed) * parentWidth - LABEL_MARGIN;
@@ -56,26 +61,54 @@ export default function Chart({
     range: [0, maxRelative > 0 ? maxRelative : 10],
   });
 
+  const max = unit === "absolute" ? maxAbsolute : maxRelative;
+
   return (
-    <div className="relative flex w-full">
-      <ChartProvider
-        data={data}
-        index={index}
-        mode={mode}
-        unit={unit}
-        width={parentWidth}
-        height={parentHeight}
-        absoluteScale={absoluteScale}
-        relativeScale={relativeScale}
-      >
-        <ChartLabel />
+    <Tooltip delayDuration={500}>
+      <TooltipTrigger asChild>
+        <div className="relative flex w-full">
+          <ChartProvider
+            data={data}
+            index={index}
+            mode={mode}
+            unit={unit}
+            width={parentWidth}
+            height={parentHeight}
+            absoluteScale={absoluteScale}
+            relativeScale={relativeScale}
+          >
+            <ChartLabel />
 
-        <ChartDrivers />
+            <ChartDrivers />
 
-        <ChartGap />
+            <ChartGap />
 
-        <ChartOpportunities />
-      </ChartProvider>
-    </div>
+            <ChartOpportunities />
+          </ChartProvider>
+        </div>
+      </TooltipTrigger>
+
+      {mode !== "opportunities" && (
+        <TooltipContent
+          className="w-full min-w-[380px] p-8"
+          {...(mode === "drivers" && {
+            side: "top",
+            sideOffset: -parentHeight,
+          })}
+          {...(mode === "gap" && {
+            side: "right",
+            align: "start",
+            avoidCollisions: false,
+            sideOffset:
+              parentWidth - max - LABEL_MARGIN - 20 > 380
+                ? -(parentWidth - max - LABEL_MARGIN - 20)
+                : -380,
+          })}
+        >
+          {mode === "drivers" && <DriversTooltip data={data} />}
+          {mode === "gap" && <NeedsTooltip data={data} />}
+        </TooltipContent>
+      )}
+    </Tooltip>
   );
 }
