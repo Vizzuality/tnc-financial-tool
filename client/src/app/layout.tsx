@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import LayoutProviders from "@/app/layout-providers";
 
 import Footer from "@/containers/footer";
+import Header from "@/containers/header";
 
 export const metadata: Metadata = {
   title: "Financial tool",
@@ -17,6 +18,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <LayoutProviders>
       <html lang="en">
         <body>
+          <Header />
           {children}
           <Footer />
         </body>

@@ -51,7 +51,7 @@ const Content = (): JSX.Element => {
   return (
     <>
       <div ref={scrollRef} className="relative">
-        <div className="container sticky top-0 h-[100svh] w-full">
+        <div className="sticky top-0 h-[100svh] w-full">
           <div className="w-full py-10 2xl:py-20">
             <Header mode={mode} unit={unit} onUnitChange={setUnit} />
 

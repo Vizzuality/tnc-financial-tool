@@ -12,18 +12,19 @@ import Wrapper from "@/containers/wrapper";
 const Home = (): JSX.Element => {
   return (
     <>
-      <Hero />
-      <Media greaterThanOrEqual="lg">
-        <Content />
-      </Media>
-
-      <Media lessThan="lg">
-        <Drivers />
-        <Needs />
-        <Opportunities />
-      </Media>
-
       <Wrapper>
+        <Hero />
+
+        <Media greaterThanOrEqual="lg">
+          <Content />
+        </Media>
+
+        <Media lessThan="lg">
+          <Drivers />
+          <Needs />
+          <Opportunities />
+        </Media>
+
         <Outro />
       </Wrapper>
     </>
