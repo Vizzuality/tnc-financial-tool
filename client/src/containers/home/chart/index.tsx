@@ -97,8 +97,6 @@ export default function Chart({
           })}
           {...(mode === "gap" && {
             side: "right",
-            align: "start",
-            avoidCollisions: false,
             sideOffset:
               parentWidth - max - LABEL_MARGIN - 20 > 380
                 ? -(parentWidth - max - LABEL_MARGIN - 20)
