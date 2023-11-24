@@ -15,7 +15,7 @@ export default function NeedsTooltip({ data }: NeedsTooltipProps) {
   const { format: formatCurrency } = useFormatCurrency();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col text-foreground">
       <h3 className="text-sm font-bold uppercase tracking-widest">{data.name}</h3>
 
       <div className="divide-y-2 divide-gray-200">

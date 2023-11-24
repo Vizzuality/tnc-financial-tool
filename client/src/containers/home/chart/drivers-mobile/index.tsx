@@ -11,6 +11,10 @@ import { Country } from "@/types/country";
 
 import { BACKGROUND, DRIVERS_COLORS } from "@/constants/charts";
 
+import DriversTooltip from "@/containers/home/chart/tooltips/drivers";
+
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
 type DataProps = { id: string; size: number; parent: string | null };
 
 const colorScale = scaleOrdinal<string, string>({
@@ -67,64 +71,72 @@ export default function ChartDrivers({
 
   return (
     <div>
-      <svg width={parentWidth} height={height} className="relative z-10">
-        {!!parentWidth && !!parentHeight && (
-          <Treemap<typeof DATA>
-            top={margin.top}
-            root={root}
-            size={[xMax, yMax]}
-            tile={treemapDice}
-            round
-          >
-            {(treemap) => (
-              <Group>
-                {treemap
-                  .sort((a, b) => {
-                    return (
-                      DRIVERS_COLORS.findIndex((c) => a.data.data.id === c.id) -
-                      DRIVERS_COLORS.findIndex((c) => b.data.data.id === c.id)
-                    );
-                  })
-                  .descendants()
-                  .reverse()
-                  .map((node) => {
-                    const nodeWidth = node.x1 - node.x0;
-                    const nodeHeight = node.y1 - node.y0;
-                    const nodeColor = colorScale(node.data.data.id);
+      <Sheet>
+        <SheetTrigger asChild>
+          <svg width={parentWidth} height={height} className="relative z-10">
+            {!!parentWidth && !!parentHeight && (
+              <Treemap<typeof DATA>
+                top={margin.top}
+                root={root}
+                size={[xMax, yMax]}
+                tile={treemapDice}
+                round
+              >
+                {(treemap) => (
+                  <Group>
+                    {treemap
+                      .sort((a, b) => {
+                        return (
+                          DRIVERS_COLORS.findIndex((c) => a.data.data.id === c.id) -
+                          DRIVERS_COLORS.findIndex((c) => b.data.data.id === c.id)
+                        );
+                      })
+                      .descendants()
+                      .reverse()
+                      .map((node) => {
+                        const nodeWidth = node.x1 - node.x0;
+                        const nodeHeight = node.y1 - node.y0;
+                        const nodeColor = colorScale(node.data.data.id);
 
-                    return (
-                      <Group key={`node-${node.data.data.id}`}>
-                        {node.depth === 1 && (
-                          <motion.rect
-                            initial={{
-                              x: node.x0 + margin.left,
-                              y: node.y0 + margin.top,
-                              width: nodeWidth,
-                              height: nodeHeight,
-                              strokeWidth: 1,
-                            }}
-                            animate={{
-                              x: node.x0 + margin.left,
-                              y: node.y0 + margin.top,
-                              width: nodeWidth,
-                              height: nodeHeight,
-                              strokeWidth: 1,
-                            }}
-                            transition={{
-                              duration: 0,
-                            }}
-                            fill={nodeColor}
-                            stroke={BACKGROUND}
-                          />
-                        )}
-                      </Group>
-                    );
-                  })}
-              </Group>
+                        return (
+                          <Group key={`node-${node.data.data.id}`}>
+                            {node.depth === 1 && (
+                              <motion.rect
+                                initial={{
+                                  x: node.x0 + margin.left,
+                                  y: node.y0 + margin.top,
+                                  width: nodeWidth,
+                                  height: nodeHeight,
+                                  strokeWidth: 1,
+                                }}
+                                animate={{
+                                  x: node.x0 + margin.left,
+                                  y: node.y0 + margin.top,
+                                  width: nodeWidth,
+                                  height: nodeHeight,
+                                  strokeWidth: 1,
+                                }}
+                                transition={{
+                                  duration: 0,
+                                }}
+                                fill={nodeColor}
+                                stroke={BACKGROUND}
+                              />
+                            )}
+                          </Group>
+                        );
+                      })}
+                  </Group>
+                )}
+              </Treemap>
             )}
-          </Treemap>
-        )}
-      </svg>
+          </svg>
+        </SheetTrigger>
+
+        <SheetContent side="bottom">
+          <DriversTooltip data={data} />
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }

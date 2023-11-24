@@ -15,7 +15,7 @@ export default function DriversTooltip({ data }: DriversTooltipProps) {
   const { format: formatCurrency } = useFormatCurrency();
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 text-foreground">
       <h3 className="text-sm font-bold uppercase tracking-widest">{data.name}</h3>
 
       <div className="flex justify-between font-bold">
