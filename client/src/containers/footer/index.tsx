@@ -70,78 +70,77 @@ const Footer: React.FC = () => {
                 className="h-24 w-64"
               />
             </a>
-            <div>
-              <div className="flex flex-col space-y-4 font-sans text-base text-white lg:flex-row lg:space-x-6 lg:space-y-0">
-                <div className="space-y-4">
-                  <a href={"https://www.naturebase.org/about"} target="_blank">
-                    About
+
+            <div className="flex flex-col space-y-4 font-space-grotesk text-base text-white lg:flex-row lg:space-x-6 lg:space-y-0">
+              <div className="space-y-5">
+                <a href={"https://www.naturebase.org/about"} target="_blank">
+                  About
+                </a>
+                <div className="flex flex-col space-y-2">
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/about#naturbase"}
+                    target="_blank"
+                  >
+                    About Naturebase
                   </a>
-                  <div className="flex flex-col space-y-1">
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/about#naturbase"}
-                      target="_blank"
-                    >
-                      About Naturebase
-                    </a>
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/about#who"}
-                      target="_blank"
-                    >
-                      Who is with us?
-                    </a>
-
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/about#users"}
-                      target="_blank"
-                    >
-                      Who can use?
-                    </a>
-
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/about#faq"}
-                      target="_blank"
-                    >
-                      FAQ
-                    </a>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <a href={"https://www.naturebase.org/science"} target="_blank">
-                    Science and data
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/about#who"}
+                    target="_blank"
+                  >
+                    Who is with us?
                   </a>
 
-                  <div className="flex flex-col space-y-1">
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/science#pathways"}
-                      target="_blank"
-                    >
-                      NCS pathways
-                    </a>
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/about#users"}
+                    target="_blank"
+                  >
+                    Who can use?
+                  </a>
 
-                    <a
-                      className="opacity-60 hover:opacity-100"
-                      href={"https://www.naturebase.org/science#data"}
-                      target="_blank"
-                    >
-                      Data sources
-                    </a>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <a href={"https://www.naturebase.org/news"} target="_blank">
-                    News
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/about#faq"}
+                    target="_blank"
+                  >
+                    FAQ
                   </a>
                 </div>
-                <div className="space-y-4">
-                  <a href={"https://www.naturebase.org/involved"} target="_blank">
-                    Get involved
+              </div>
+              <div className="space-y-5">
+                <a href={"https://www.naturebase.org/science"} target="_blank">
+                  Science and data
+                </a>
+
+                <div className="flex flex-col space-y-2">
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/science#pathways"}
+                    target="_blank"
+                  >
+                    NCS pathways
+                  </a>
+
+                  <a
+                    className="opacity-60 hover:opacity-100"
+                    href={"https://www.naturebase.org/science#data"}
+                    target="_blank"
+                  >
+                    Data sources
                   </a>
                 </div>
+              </div>
+              <div className="space-y-5">
+                <a href={"https://www.naturebase.org/news"} target="_blank">
+                  News
+                </a>
+              </div>
+              <div className="space-y-5">
+                <a href={"https://www.naturebase.org/involved"} target="_blank">
+                  Get involved
+                </a>
               </div>
             </div>
           </div>
@@ -186,7 +185,7 @@ const Footer: React.FC = () => {
                       <Button
                         size="sm"
                         type="submit"
-                        className="h-12 rounded-r-3xl bg-turquoise px-6 lg:rounded-l-none"
+                        className="h-12 rounded-3xl bg-turquoise px-6 lg:rounded-l-none"
                       >
                         <p>Subscribe</p>
                       </Button>
@@ -198,10 +197,10 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </Wrapper>
-      <div className="mt-14 bg-gray-800 py-6">
+      <div className="mt-10 bg-gray-800 py-6 lg:mt-14">
         <Media lessThan="lg">
           <Wrapper className="pb-12">
-            <p className="font-sans text-[14px] text-white opacity-60">
+            <p className="font-space-grotesk text-[14px] text-white opacity-60">
               Additional{" "}
               <a
                 href="https://conservationgateway.org/Pages/Terms-of-Use.aspx"
@@ -236,7 +235,7 @@ const Footer: React.FC = () => {
         </Media>
         <Wrapper className="flex items-center justify-between">
           <Media greaterThanOrEqual="lg">
-            <p className="max-w-lg font-sans text-[14px] text-white opacity-60">
+            <p className="max-w-lg font-space-grotesk text-[14px] text-white opacity-60">
               Additional{" "}
               <a
                 href="https://conservationgateway.org/Pages/Terms-of-Use.aspx"
@@ -268,16 +267,20 @@ const Footer: React.FC = () => {
               .
             </p>
           </Media>
-          <p className="font-sans text-base text-white opacity-60">Supported by Bezos Earth Fund</p>
-          <a href="https://nature4climate.org" rel="noreferrer" target="_blank">
-            <Image
-              src="/svgs/nature4Climate.svg"
-              alt="Earth"
-              width={200}
-              height={200}
-              className="h-14 w-28"
-            />
-          </a>
+          <div className="flex w-full items-center justify-between lg:w-[400px] lg:flex-row-reverse">
+            <a href="https://nature4climate.org" rel="noreferrer" target="_blank">
+              <Image
+                src="/svgs/nature4Climate.svg"
+                alt="Earth"
+                width={200}
+                height={200}
+                className="h-14 w-28"
+              />
+            </a>
+            <p className="font-sans font-space-grotesk text-base text-white opacity-60">
+              Supported by Bezos Earth Fund
+            </p>
+          </div>
         </Wrapper>
       </div>
     </section>
