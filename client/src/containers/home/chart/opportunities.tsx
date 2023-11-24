@@ -4,19 +4,13 @@ import { motion } from "framer-motion";
 
 import { DRIVERS_COLORS, LABEL_MARGIN, TRANSITION } from "@/constants/charts";
 import { MAX_OPPORTUNITIES } from "@/constants/countries";
+import { getOpportunityOpacity } from "@/constants/opportunities";
 
 import { useChartContext } from "@/containers/home/chart/provider";
 
 export default function ChartOpportunities() {
   const [hover, setHover] = useState<boolean>(false); // [id, setHover
   const { index, mode, width, data } = useChartContext();
-
-  const getOpacity = (d: number) => {
-    if (d === 0) return 0.32;
-    if (d === 0.5) return 0.32;
-    if (d === 1) return 0.64;
-    if (d === 1.5) return 1;
-  };
 
   return (
     <div
@@ -63,7 +57,7 @@ export default function ChartOpportunities() {
                   className="absolute left-0 top-1/2 z-10 h-full w-full -translate-y-1/2 border-4 px-2"
                   style={{
                     borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
-                    opacity: getOpacity(d.cost),
+                    opacity: getOpportunityOpacity(d.cost),
                   }}
                 />
 

@@ -4,6 +4,7 @@ import { Country } from "@/types/country";
 
 import { DRIVERS_COLORS } from "@/constants/charts";
 import { MAX_OPPORTUNITIES } from "@/constants/countries";
+import { getOpportunityOpacity } from "@/constants/opportunities";
 
 import OpportunitiesTooltip from "@/containers/home/chart/tooltips/opportunities";
 
@@ -41,6 +42,7 @@ export default function ChartOpportunities({ width: parentWidth, data }: ChartOp
                     className="flex h-0 w-full items-center overflow-hidden border-4 px-2 text-[11px] leading-none"
                     style={{
                       borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
+                      opacity: getOpportunityOpacity(d.cost),
                     }}
                   >
                     <span className="block">{d.name}</span>

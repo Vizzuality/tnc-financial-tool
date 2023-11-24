@@ -3,19 +3,13 @@
 import { Country } from "@/types/country";
 
 import { DRIVERS_COLORS } from "@/constants/charts";
+import { getOpportunityOpacity } from "@/constants/opportunities";
 
 export type OpportunitiesTooltipProps = {
   data: Country;
 };
 
 export default function OpportunitiesTooltip({ data }: OpportunitiesTooltipProps) {
-  const getOpacity = (d: number) => {
-    if (d === 0) return 0.32;
-    if (d === 0.5) return 0.32;
-    if (d === 1) return 0.64;
-    if (d === 1.5) return 1;
-  };
-
   return (
     <div className="flex flex-col text-background">
       <h3 className="text-sm font-bold uppercase tracking-widest">{data.name}</h3>
@@ -29,7 +23,7 @@ export default function OpportunitiesTooltip({ data }: OpportunitiesTooltipProps
                   className="absolute left-0 top-1/2 z-10 h-full w-full -translate-y-1/2 border-4 px-2"
                   style={{
                     borderColor: DRIVERS_COLORS.find((c) => c.id === d.source)?.color,
-                    opacity: getOpacity(d.cost),
+                    opacity: getOpportunityOpacity(d.cost),
                   }}
                 />
 
