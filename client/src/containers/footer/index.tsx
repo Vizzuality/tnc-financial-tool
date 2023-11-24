@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col space-y-2">
                   <a
                     className="opacity-60 hover:opacity-100"
-                    href={"https://www.naturebase.org/about#naturbase"}
+                    href={"https://www.naturebase.org/about#naturebase"}
                     target="_blank"
                   >
                     About Naturebase
