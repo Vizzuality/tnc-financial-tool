@@ -7,6 +7,7 @@ import Opportunities from "@/containers/home/content/opportunities";
 import Hero from "@/containers/home/hero";
 import Outro from "@/containers/home/outro";
 import { Media } from "@/containers/media";
+import Wrapper from "@/containers/wrapper";
 
 const Home = (): JSX.Element => {
   return (
@@ -21,7 +22,10 @@ const Home = (): JSX.Element => {
         <Needs />
         <Opportunities />
       </Media>
-      <Outro />
+
+      <Wrapper>
+        <Outro />
+      </Wrapper>
     </>
   );
 };
