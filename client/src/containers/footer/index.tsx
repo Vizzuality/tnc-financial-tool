@@ -1,59 +1,52 @@
 "use client";
 import React, { useCallback } from "react";
 
-import { Form, Field } from "react-final-form";
+import { Field, Form } from "react-final-form";
 
 import Image from "next/image";
 
-// import { useSaveSubscribe } from "hooks/subscribe";
-// import { useToasts } from "hooks/toast";
-
 import { cn } from "@/lib/classnames";
+
+import { useSaveContact } from "@/hooks/contact";
 
 import { Media } from "@/containers/media";
 import Wrapper from "@/containers/wrapper";
 
 import { composeValidators } from "@/components/forms/validations";
 import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 const Footer: React.FC = () => {
-  // const { addToast } = useToasts();
-  // const saveSubscribeMutation = useSaveSubscribe({});
+  const { toast } = useToast();
+  const saveContactMutation = useSaveContact();
 
   const onSubmit = useCallback(
-    (/* data, form */) => {
-      // saveSubscribeMutation.mutate(
-      //   { data },
-      //   {
-      //     onSuccess: () => {
-      //       addToast(
-      //         "success-contact",
-      //         <>
-      //           <p className="text-base">You have successfully subscribed.</p>
-      //         </>,
-      //         {
-      //           level: "success",
-      //         },
-      //       );
-      //       form.reset();
-      //     },
-      //     onError: () => {
-      //       addToast(
-      //         "error-contact",
-      //         <>
-      //           <p className="text-base">Oops! Something went wrong</p>
-      //         </>,
-      //         {
-      //           level: "error",
-      //         },
-      //       );
-      //     },
-      //   },
-      // );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (data: any, form: any) => {
+      saveContactMutation.mutate(
+        {
+          data,
+        },
+        {
+          onSuccess: () => {
+            toast({
+              title: "You have successfully subscribed!",
+              description: "We'll be in touch soon.",
+            });
+
+            form?.reset();
+          },
+          onError: () => {
+            toast({
+              title: "Something went wrong",
+              description: "Please try again later.",
+            });
+          },
+        },
+      );
     },
-    [
-      /* addToast, saveSubscribeMutation */
-    ],
+    [saveContactMutation, toast],
   );
 
   return (
@@ -154,6 +147,7 @@ const Footer: React.FC = () => {
             />
             <h2 className="font-space-grotesk text-2lg text-white lg:text-3xl">Stay tuned</h2>
             <p className="text-base text-white">Subscribe to our newsletter</p>
+
             <Form initialValues={{ email: "" }} onSubmit={onSubmit}>
               {({ handleSubmit, form }) => {
                 return (
@@ -283,6 +277,7 @@ const Footer: React.FC = () => {
           </div>
         </Wrapper>
       </div>
+      <Toaster />
     </section>
   );
 };
