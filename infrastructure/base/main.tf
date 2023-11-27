@@ -105,7 +105,6 @@ locals {
   production_client_env = {
     NEXT_PUBLIC_URL               = "https://${var.production_domain}"
     NEXT_PUBLIC_ENVIRONMENT       = "production"
-    NEXT_PUBLIC_API_URL           = "https://${var.production_domain}/cms/api"
     NEXT_PUBLIC_GA_TRACKING_ID    = var.ga_tracking_id
     LOG_LEVEL                     = "info"
     SENDGRID_API_KEY_SUBSCRIPTION = var.sendgrid_api_key_subscription
