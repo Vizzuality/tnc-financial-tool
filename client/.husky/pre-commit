@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd ./client && pnpm lint --fix && pnpm check-types
+cd ./client && yarn lint --fix && yarn check-types
