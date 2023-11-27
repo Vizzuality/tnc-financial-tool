@@ -34,13 +34,7 @@ const Header = () => {
               target="_blank"
               className="h-[40px] w-[180px] shrink-0 cursor-pointer"
             >
-              <Image
-                src="/svgs/naturebase.svg"
-                alt="Logo"
-                width={180}
-                height={40}
-                layout="responsive"
-              />
+              <Image src="/svgs/naturebase.svg" alt="Logo" width={180} height={40} />
             </a>
 
             <ul className="m-0 flex w-full items-center justify-end space-x-12 p-0">
@@ -66,13 +60,7 @@ const Header = () => {
                   target="_blank"
                   className="h-[40px] w-[180px] shrink-0 cursor-pointer"
                 >
-                  <Image
-                    src="/svgs/naturebase.svg"
-                    alt="Logo"
-                    width={180}
-                    height={40}
-                    layout="responsive"
-                  />
+                  <Image src="/svgs/naturebase.svg" alt="Logo" width={180} height={40} />
                 </a>
               )}
               <motion.div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer">

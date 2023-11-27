@@ -271,7 +271,7 @@ const Footer: React.FC = () => {
                 className="h-14 w-28"
               />
             </a>
-            <p className="font-sans font-space-grotesk text-base text-white opacity-60">
+            <p className="font-sans text-base text-white opacity-60">
               Supported by Bezos Earth Fund
             </p>
           </div>
