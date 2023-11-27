@@ -4,6 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import type { Metadata } from "next";
 
 import LayoutProviders from "@/app/layout-providers";
+import StyledJsxRegistry from "@/app/registry";
 
 import Footer from "@/containers/footer";
 import Header from "@/containers/header";
@@ -15,14 +16,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <LayoutProviders>
-      <html lang="en">
-        <body>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </html>
-    </LayoutProviders>
+    <StyledJsxRegistry>
+      <LayoutProviders>
+        <html lang="en">
+          <body>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </LayoutProviders>
+    </StyledJsxRegistry>
   );
 }
