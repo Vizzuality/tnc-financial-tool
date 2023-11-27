@@ -25,7 +25,7 @@ const Needs = (): JSX.Element => {
   const [unit, setUnit] = useState<"absolute" | "relative">("absolute");
 
   return (
-    <div className="container w-full">
+    <div className="w-full">
       <div className="space-y-10 py-10 lg:py-40">
         <header className="w-full space-y-5">
           <div className="space-y-5">

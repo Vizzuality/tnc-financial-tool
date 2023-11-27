@@ -11,7 +11,7 @@ import ChartOpportunities from "@/containers/home/chart/opportunities-mobile";
 
 const Opportunities = (): JSX.Element => {
   return (
-    <div className="container w-full">
+    <div className="w-full">
       <div className="space-y-10 py-10 lg:py-40">
         <header className="flex w-full justify-between">
           <div className="space-y-5">

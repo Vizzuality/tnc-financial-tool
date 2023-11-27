@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Env variables
+
+| Variable name                   | Description                                                                                                 | Default value |
+|---------------------------------|-------------------------------------------------------------------------------------------------------------|--------------:|
+| SENDGRID_API_KEY_SUBSCRIPTION   | Key to authenticate access to SendGrid e-mail platform services.                                            |               |
+| NEXT_PUBLIC_GA_TRACKING_ID | Key to track user behaviour on Google Analitycs.                                                                               |               |
+| NEXT_PUBLIC_API_URL             | API URL.                                                                                                    |               |
+| NEXT_PUBLIC_ENVIRONMENT         | Deployment environment. Accepted values: 'development', 'staging', 'production'                             |               |
+| NEXT_PUBLIC_URL                 | Canonical url of the app. Will be used for meta tags and social media shares. Not needed in Vercel deploys. |               |
+
