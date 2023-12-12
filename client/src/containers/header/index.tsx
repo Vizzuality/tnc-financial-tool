@@ -2,6 +2,7 @@
 import React from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
@@ -39,11 +40,11 @@ const Header = () => {
 
             <ul className="m-0 flex w-full items-center justify-end space-x-12 p-0">
               {NAV_OPTIONS.map((opt) => (
-                <a key={opt.label} href={opt.href} target="_blank">
+                <Link key={opt.label} href={opt.href} target="_blank">
                   <div className="relative m-0 flex cursor-pointer justify-between">
                     <p className="hover:text-brand-700 py-6 text-base">{opt.label}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </ul>
           </div>
