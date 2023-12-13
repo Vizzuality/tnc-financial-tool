@@ -1,6 +1,5 @@
 "use client";
 
-import Global from "@/containers/global";
 import Wrapper from "@/containers/wrapper";
 
 import {
@@ -52,7 +51,6 @@ const Methodology = (): JSX.Element => {
           </Accordion>
         ))}
       </div>
-      <Global />
     </>
   );
 };

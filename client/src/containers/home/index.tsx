@@ -1,6 +1,5 @@
 "use client";
 
-import Global from "@/containers/global";
 import Content from "@/containers/home/content";
 import Drivers from "@/containers/home/content/drivers";
 import Needs from "@/containers/home/content/needs";
@@ -28,7 +27,6 @@ const Home = (): JSX.Element => {
 
         <Outro />
       </Wrapper>
-      <Global />
     </>
   );
 };
