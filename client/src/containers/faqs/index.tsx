@@ -11,6 +11,7 @@ const Faqs = (): JSX.Element => {
           Frequently asked questions
         </h4>
       </Wrapper>
+
       <Global />
     </>
   );

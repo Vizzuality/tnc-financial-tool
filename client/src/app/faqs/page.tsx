@@ -3,7 +3,7 @@ import { Metadata, type NextPage } from "next";
 import FAQs from "@/containers/faqs";
 
 export const metadata: Metadata = {
-  title: "Methodology",
+  title: "FAQs",
 };
 
 const FAQsPage: NextPage = () => {
