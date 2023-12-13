@@ -1,5 +1,7 @@
 "use client";
 
+import { useCallback, useState } from "react";
+
 import Wrapper from "@/containers/wrapper";
 
 import {
@@ -78,6 +80,14 @@ const FAQS = [
 ];
 
 const Faqs = (): JSX.Element => {
+  const [values, setValues] = useState(["1"]);
+
+  const handleOpenAccordions = useCallback((idx: string) => {
+    setValues((prevValue) =>
+      prevValue.includes(idx) ? prevValue.filter((id) => id !== idx) : [...prevValue, idx],
+    );
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -97,8 +107,14 @@ const Faqs = (): JSX.Element => {
               </Wrapper>
             )}
 
-            <Accordion type="single" collapsible key={idx} className="accordion">
-              <AccordionItem value="item-1">
+            <Accordion
+              key={idx}
+              className="accordion"
+              type="multiple"
+              value={values}
+              onValueChange={() => handleOpenAccordions(`${idx}`)}
+            >
+              <AccordionItem value={`${idx}`}>
                 <AccordionTrigger className="plus-minus">{faq.question}</AccordionTrigger>
 
                 <AccordionContent>

@@ -48,10 +48,10 @@ const Methodology = (): JSX.Element => {
       <div className="accordion mb-20 flex flex-col">
         {METHODOLOGY_POINTS.map((faq, idx) => (
           <Accordion
+            key={idx}
             type="multiple"
             value={values}
             onValueChange={() => handleOpenAccordions(`${idx}`)}
-            key={idx}
           >
             <AccordionItem value={`${idx}`}>
               <AccordionTrigger className="plus-minus">{faq.question}</AccordionTrigger>
