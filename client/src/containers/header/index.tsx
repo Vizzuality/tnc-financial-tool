@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { motion } from "framer-motion";
 
@@ -17,6 +18,10 @@ import { Media } from "@/containers/media";
 import Wrapper from "@/containers/wrapper";
 
 const Header = () => {
+  const pathname = usePathname();
+
+  const [page, setPage] = useState(NAV_OPTIONS[0]);
+
   const { isOpen: isOpenMobile, open: openMobile, close: closeMobile } = useModal();
 
   return (
@@ -40,10 +45,19 @@ const Header = () => {
 
             <ul className="m-0 flex w-full items-center justify-end space-x-12 p-0">
               {NAV_OPTIONS.map((opt) => (
-                <Link key={opt.label} href={opt.href} target="_blank">
-                  <div className="relative m-0 flex cursor-pointer justify-between">
+                <Link key={opt.label} href={opt.href}>
+                  <button
+                    className="relative m-0 flex cursor-pointer justify-between"
+                    onClick={() => setPage(opt)}
+                  >
                     <p className="hover:text-brand-700 py-6 text-base">{opt.label}</p>
-                  </div>
+                    {pathname !== "/" && opt.id === page?.id && (
+                      <motion.div
+                        className="absolute -bottom-px left-0 right-0 h-[3px] bg-white"
+                        layoutId="underline"
+                      />
+                    )}
+                  </button>
                 </Link>
               ))}
             </ul>
