@@ -1,5 +1,7 @@
 "use client";
 
+import { useCallback, useState } from "react";
+
 import Wrapper from "@/containers/wrapper";
 
 import {
@@ -30,6 +32,14 @@ const METHODOLOGY_POINTS = [
 ];
 
 const Methodology = (): JSX.Element => {
+  const [values, setValues] = useState(["0"]);
+
+  const handleOpenAccordions = useCallback((idx: string) => {
+    setValues((prevValue) =>
+      prevValue.includes(idx) ? prevValue.filter((id) => id !== idx) : [...prevValue, idx],
+    );
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -37,8 +47,13 @@ const Methodology = (): JSX.Element => {
       </Wrapper>
       <div className="accordion mb-20 flex flex-col">
         {METHODOLOGY_POINTS.map((faq, idx) => (
-          <Accordion type="single" collapsible key={idx}>
-            <AccordionItem value="item-1">
+          <Accordion
+            type="multiple"
+            value={values}
+            onValueChange={() => handleOpenAccordions(`${idx}`)}
+            key={idx}
+          >
+            <AccordionItem value={`${idx}`}>
               <AccordionTrigger className="plus-minus">{faq.question}</AccordionTrigger>
 
               <AccordionContent>
