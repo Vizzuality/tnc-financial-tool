@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 
+import { FAQS } from "@/containers/faqs/constants";
 import Wrapper from "@/containers/wrapper";
 
 import {
@@ -11,76 +12,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQS = [
-  {
-    category: "NCS Funding Taxonomy",
-    question:
-      "REDD+ and LEAF overlapasLEAF is a funding mechanism for REDD+. Additionally,both REDD+ generally and LEAF specifically have market and non-market elements. Should the market elements be included under the carbon markets section?",
-    answer: "",
-  },
-  {
-    category: null,
-    question:
-      "Are you going to align the taxonomy to reflect the 'gold standard'taxonomy for conservation finance?",
-    answer:
-      "<div><a href='#'>The NCS funding taxonomy</a> was developed in partnership with TNC Global and reviewed by membersof the TNC country teams. The taxonomy reflects some elements of the CFA taxonomy, but ultimately highlights the NCS funding sources that surfaced most frequently across geographies.</div>",
-  },
-  {
-    category: null,
-    question:
-      "The private column in thetaxonomy looks short.Are you considering financial solutions for agricultural producersto switch to sustainable production?",
-    answer: "",
-  },
-  {
-    category: "NCS Current Funding Estimates & Approach",
-    question:
-      "Is possible tosplitout theall the individual funding sources (Adaptation Fund, GCF, GEF, etc.for India) as aspecific line item under international aid?",
-    answer: "",
-  },
-  {
-    category: null,
-    question: "Is there alist of all funding sources in an annexsomewhere?",
-    answer: "",
-  },
-  {
-    category: "NCS Funding Efficiency",
-    question:
-      "How is efficiency defined? Commitments vs disbursement? Is there a time horizon in this? (E.g.,not spent after X years?)",
-    answer: "",
-  },
-  {
-    category: "New Funding Sources",
-    question: "How is feasibility to implement of new funding sources decided? Who decides this?",
-    answer: "",
-  },
-  {
-    category: "Negative Flows",
-    question:
-      "Are thereany positive flows that are dependent on negative flows?E.g.,in the United States, building a highway (negativeimpact) is tied to wetland banking (positive flow).",
-    answer: "",
-  },
-  {
-    category: null,
-    question:
-      "Can we also identify top companies within harmful industries?That would be useful for our corporate engagement team to keep in mind when we are approached by them.",
-    answer: "",
-  },
-  {
-    category: null,
-    question:
-      "Are we looking at political appetite and/or industry lobbying power for negative subsidies?",
-    answer: "",
-  },
-  {
-    category: null,
-    question:
-      "Based on thesocial implicationsof rural development,is this report examining feasibility around social acceptanceorjust usingan economic lens?",
-    answer: "",
-  },
-];
-
 const Faqs = (): JSX.Element => {
-  const [values, setValues] = useState(["1"]);
+  const [values, setValues] = useState(["0"]);
 
   const handleOpenAccordions = useCallback((idx: string) => {
     setValues((prevValue) =>
