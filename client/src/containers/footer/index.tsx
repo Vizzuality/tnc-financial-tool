@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
               height={40}
               className="h-10 w-10 lg:h-12 lg:w-12"
             />
-            <h2 className="font-space-grotesk text-2lg text-white lg:text-3xl">Stay tuned</h2>
+            <h2 className="font-space-grotesk text-2lg text-white lg:text-3xl">Stay in touch</h2>
             <p className="text-base text-white">Subscribe to our newsletter</p>
 
             <Form initialValues={{ email: "" }} onSubmit={onSubmit}>
