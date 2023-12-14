@@ -7,6 +7,7 @@ import LayoutProviders from "@/app/layout-providers";
 import StyledJsxRegistry from "@/app/registry";
 
 import Footer from "@/containers/footer";
+import Global from "@/containers/global";
 import Header from "@/containers/header";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <body>
             <Header />
             {children}
+            <Global />
             <Footer />
           </body>
         </html>

@@ -73,4 +73,22 @@
   body {
     @apply bg-gray-900 text-white font-space-grotesk;
   }
+  .accordion {
+    .dangerouslySetInnerHTML {
+
+      ul {
+        margin-left: 24px;
+        list-style-type: disc;
+      }
+
+      a {
+        color: #4FB8DA;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
+
