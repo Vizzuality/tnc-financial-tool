@@ -38,7 +38,6 @@ export const COUNTRIES = [
         cost: 406.5618733333333,
         id: 5,
       },
-      // 713.62
     ],
     opportunities: [
       {
@@ -510,7 +509,38 @@ export const COUNTRIES = [
         id: 3,
       },
     ],
-    opportunities: [],
+    opportunities: [
+      {
+        id: 1,
+        name: "Emphasize the importance of NCS-specific government funding",
+        cost: 0,
+        source: "public",
+      },
+      {
+        id: 2,
+        name: "Drive subsidy reform in the petroleum industry",
+        cost: 1.5,
+        source: "public",
+      },
+      {
+        id: 3,
+        name: "Support additional nature bonds (e.g., deal to fund Galapagos conservation)",
+        cost: 1.5,
+        source: "environmental",
+      },
+      {
+        id: 4,
+        name: "Work with carbon project developers to set up REDD+ projects",
+        cost: 0,
+        source: "international",
+      },
+      {
+        id: 5,
+        name: "Set up a collaboration model with other Amazon basin country teams to amplify the needs for the region as a whole",
+        cost: 0,
+        source: "international",
+      },
+    ],
   },
   {
     available_min: 131.0,
@@ -550,7 +580,14 @@ export const COUNTRIES = [
         id: 5,
       },
     ],
-    opportunities: [],
+    opportunities: [
+      {
+        id: 1,
+        name: "Dedicated government budget allocations to climate change and new forestry green bond in private markets",
+        cost: 0,
+        source: "public",
+      },
+    ],
   },
 ]
   .map((country) => {
