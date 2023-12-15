@@ -67,13 +67,15 @@ const Header = () => {
           <Wrapper>
             <div className="relative flex h-20 items-center justify-between">
               {!isOpenMobile && (
-                <a
-                  href={"https://www.naturebase.org"}
-                  target="_blank"
-                  className="h-[40px] w-[180px] shrink-0 cursor-pointer"
+                <Link
+                  href="/"
+                  className="flex h-[40px] shrink-0 cursor-pointer items-center space-x-2"
                 >
-                  <Image src="/svgs/naturebase.svg" alt="Logo" width={180} height={40} />
-                </a>
+                  <Image src="/svgs/naturebase.svg" alt="Logo" width={40} height={20} />
+                  <p className="font-space-grotesk text-lg leading-none">
+                    financial assessment tool
+                  </p>
+                </Link>
               )}
               <motion.div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer">
                 <MenuButton

@@ -27,7 +27,7 @@ const MobileMenuModal = ({
         <Wrapper className="flex h-[60vh] flex-col justify-between">
           <div className="flex flex-col space-y-10 pb-32 pt-12">
             {NAV_OPTIONS.map((o) => (
-              <Link key={o.id} href={o.href} target="_blank" className="text-lg text-white">
+              <Link key={o.id} href={o.href} className="text-lg text-white">
                 <div onClick={() => close()}>{o.label}</div>
               </Link>
             ))}
