@@ -48,7 +48,9 @@ const Faqs = (): JSX.Element => {
               onValueChange={() => handleOpenAccordions(`${idx}`)}
             >
               <AccordionItem value={`${idx}`}>
-                <AccordionTrigger className="plus-minus">{faq.question}</AccordionTrigger>
+                <AccordionTrigger defaultChecked={idx === 0} className="plus-minus">
+                  {faq.question}
+                </AccordionTrigger>
 
                 <AccordionContent>
                   <div

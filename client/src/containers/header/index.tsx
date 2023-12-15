@@ -35,13 +35,10 @@ const Header = () => {
       <Media greaterThanOrEqual="lg">
         <Wrapper>
           <div className="flex items-center justify-between space-x-12 border-b border-gray-900 text-lg">
-            <a
-              href={"https://www.naturebase.org"}
-              target="_blank"
-              className="h-[40px] w-[180px] shrink-0 cursor-pointer"
-            >
-              <Image src="/svgs/naturebase.svg" alt="Logo" width={180} height={40} />
-            </a>
+            <Link href="/" className="flex h-[40px] shrink-0 cursor-pointer items-center space-x-3">
+              <Image src="/svgs/naturebase.svg" alt="Logo" width={40} height={20} />
+              <p className="font-space-grotesk text-2lg leading-none">financial assessment tool</p>
+            </Link>
 
             <ul className="m-0 flex w-full items-center justify-end space-x-12 p-0">
               {NAV_OPTIONS.map((opt) => (

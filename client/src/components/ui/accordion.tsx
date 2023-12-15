@@ -29,7 +29,8 @@ const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => {
-  const [open, setOpen] = React.useState(false);
+  const { defaultChecked } = props;
+  const [open, setOpen] = React.useState(defaultChecked);
 
   return (
     <motion.div>
