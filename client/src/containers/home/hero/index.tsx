@@ -7,8 +7,8 @@ const Hero = (): JSX.Element => {
         <section className="space-y-6">
           <h1 className="max-w-4xl text-2lg md:text-2xl">
             A global study by <span className="font-semibold">The Nature Conservancy</span> has
-            identified <span className="text-sky">funding opportunities for NCS</span> in{" "}
-            {COUNTRIES.length} countries.
+            identified <span className="text-sky">funding opportunities and gaps for NCS</span> in{" "}
+            {COUNTRIES.length} of the countries with the highest NCS mitigation potential.
           </h1>
 
           <div className="grid gap-5 lg:grid-cols-2 lg:gap-20">

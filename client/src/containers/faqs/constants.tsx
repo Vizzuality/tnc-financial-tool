@@ -97,7 +97,7 @@ export const FAQS = [
     question:
       "Can we also identify top companies within harmful industries?That would be useful for our corporate engagement team to keep in mind when we are approached by them.",
     answer:
-      "<div><p>Wheredata is available, market shareby industry is broken out to helpidentifyopportunities to engage with select corporationson NCS actions. However, where markets are highly fragmentedand the individual corporate breakdown is unavailable (e.g., agriculture in India), partnering with top companies might not be the best lever for engagement as compared to policy.</p></div>",
+      "<div><p>Where data is available, market shareby industry is broken out to help identify opportunities to engage with select corporationson NCS actions. However, where markets are highly fragmentedand the individual corporate breakdown is unavailable (e.g., agriculture in India), partnering with top companies might not be the best lever for engagement as compared to policy.</p></div>",
   },
   {
     category: null,

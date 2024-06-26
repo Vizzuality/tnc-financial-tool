@@ -28,7 +28,7 @@ const relativeGlobalScale = scaleLinear<number>({
 });
 
 const Content = (): JSX.Element => {
-  const [mode, setMode] = useState<"drivers" | "gap" | "opportunities">("drivers");
+  const [mode, setMode] = useState<"drivers" | "gap">("drivers");
   const [unit, setUnit] = useState<"absolute" | "relative">("absolute");
 
   const scrollRef = useRef(null);
@@ -37,14 +37,11 @@ const Content = (): JSX.Element => {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latestScrollY: number) => {
-    if (latestScrollY < 0.25) {
+    if (latestScrollY < 0.5) {
       setMode("drivers");
     }
-    if (latestScrollY > 0.25 && latestScrollY < 0.6) {
+    if (latestScrollY > 0.5) {
       setMode("gap");
-    }
-    if (latestScrollY > 0.6) {
-      setMode("opportunities");
     }
   });
 

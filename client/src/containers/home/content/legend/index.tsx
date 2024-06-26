@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { SOURCE_OPPORTUNIIES } from "@/constants/countries";
 import { DRIVERS } from "@/constants/drivers";
 
 const variants = {
@@ -29,7 +28,7 @@ const variants = {
 };
 
 interface LegendProps {
-  mode: "drivers" | "gap" | "opportunities";
+  mode: "drivers" | "gap";
 }
 
 const Legend = ({ mode }: LegendProps): JSX.Element => {
@@ -78,45 +77,6 @@ const Legend = ({ mode }: LegendProps): JSX.Element => {
                 );
               })}
             </ul>
-          </motion.footer>
-        )}
-
-        {mode === "opportunities" && (
-          <motion.footer {...variants} className="flex w-full justify-end">
-            <div className="space-y-2">
-              <h3 className="text-right text-sm font-bold">Funding source and cost ($B):</h3>
-              <ul className="flex flex-col items-end space-y-0">
-                {DRIVERS.filter((d) => {
-                  return SOURCE_OPPORTUNIIES.find((s) => s === d.id);
-                }).map((d) => (
-                  <li key={d.id} className="flex items-center space-x-2">
-                    <span className="text-xs">{d.name}</span>
-
-                    <ul className="flex">
-                      {[1, 0.64, 0.32].map((v) => (
-                        <li
-                          key={v}
-                          className="h-2 w-10"
-                          style={{
-                            backgroundColor: d?.color,
-                            opacity: v,
-                          }}
-                        />
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-                <li key="labels" className="flex items-center space-x-2">
-                  <ul className="flex justify-between">
-                    {[">1.5B", null, "<0.5B"].map((v) => (
-                      <li key={v} className="h-2 w-10 text-center text-[10px]">
-                        {v}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </ul>
-            </div>
           </motion.footer>
         )}
       </AnimatePresence>
