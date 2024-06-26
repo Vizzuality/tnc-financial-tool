@@ -11,7 +11,7 @@ import Global from "@/containers/global";
 import Header from "@/containers/header";
 
 export const metadata: Metadata = {
-  title: "Financial tool",
+  title: "NCS funding tool",
   description:
     "A global study by The Nature Conservancy has identified funding opportunities for NCS",
 };

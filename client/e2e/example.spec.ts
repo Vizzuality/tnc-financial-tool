@@ -4,7 +4,7 @@ test("has title", async ({ page }) => {
   await page.goto(`/`);
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Financial tool/);
+  await expect(page).toHaveTitle(/NCS funding tool/);
 });
 
 // test("has title", async ({ page }) => {

@@ -37,7 +37,7 @@ const Header = () => {
           <div className="flex items-center justify-between space-x-12 border-b border-gray-900 text-lg">
             <Link href="/" className="flex h-[40px] shrink-0 cursor-pointer items-center space-x-3">
               <Image src="/svgs/naturebase.svg" alt="Logo" width={40} height={20} />
-              <p className="font-space-grotesk text-2lg leading-none">financial assessment tool</p>
+              <p className="font-space-grotesk text-2lg leading-none">NCS funding tool</p>
             </Link>
 
             <ul className="m-0 flex w-full items-center justify-end space-x-12 p-0">
@@ -73,7 +73,7 @@ const Header = () => {
                 >
                   <Image src="/svgs/naturebase.svg" alt="Logo" width={40} height={20} />
                   <p className="font-space-grotesk text-lg leading-none">
-                    financial assessment tool
+                    NCS funding tool
                   </p>
                 </Link>
               )}
