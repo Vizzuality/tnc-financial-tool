@@ -1,4 +1,4 @@
-import { Country, Source } from "@/types/country";
+import { Country } from "@/types/country";
 
 export const COUNTRIES = [
   {
@@ -39,38 +39,6 @@ export const COUNTRIES = [
         id: 5,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Develop sustainable forestry market to fund restoration",
-        cost: 1.5,
-        source: "private",
-      },
-      {
-        id: 2,
-        name: "Incentivize sustainable agriculture (e.g., ICFLS) via efficient government funding",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 3,
-        name: "Drive demand for sustainable cattle (via tax breaks, de-risked credit)",
-        cost: 1.5,
-        source: "private",
-      },
-      {
-        id: 4,
-        name: "More efficiently allocate public funding for conservation",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 5,
-        name: "Leverage ETS carbon markets to drive reforestation",
-        cost: 1,
-        source: "environmental",
-      },
-    ],
   },
   {
     available_min: 1134.0,
@@ -98,32 +66,6 @@ export const COUNTRIES = [
         source: "public",
         cost: 638.0,
         id: 3,
-      },
-    ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Connect local communities to carbon market projects",
-        cost: 1.5,
-        source: "environmental",
-      },
-      {
-        id: 2,
-        name: "Remove biofuel subsidy for producers draining peatlands",
-        cost: 1,
-        source: "public",
-      },
-      {
-        id: 3,
-        name: "Unlock private funding for early-stage projects for the carbon market",
-        cost: 1,
-        source: "private",
-      },
-      {
-        id: 4,
-        name: "Develop and pilot chain of custody certified timber",
-        cost: 0.5,
-        source: "private",
       },
     ],
   },
@@ -160,32 +102,6 @@ export const COUNTRIES = [
         id: 4,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Improve ROI / effectiveness of government reforestation programs",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 2,
-        name: "Develop pipeline of CCER (carbon market) projects",
-        cost: 1.5,
-        source: "environmental",
-      },
-      {
-        id: 3,
-        name: "Expand pilots subsidizing organic fertilizer for better nutrient management",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 4,
-        name: "Reallocate government investments / imports towards sustainable producers",
-        cost: 0,
-        source: "public",
-      },
-    ],
   },
   {
     available_min: 10216.525131639853,
@@ -218,32 +134,6 @@ export const COUNTRIES = [
         source: "private",
         cost: 764.9467253871288,
         id: 4,
-      },
-    ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Build sustainable forestry & agroforestry markets",
-        cost: 1.5,
-        source: "private",
-      },
-      {
-        id: 2,
-        name: "Reform policy to better allocate the CAMPA fund & EFT",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 3,
-        name: "Reduce subsidy for urea-based fertilizer for better nutrient management",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 4,
-        name: "Create a baseline and credit compliance carbon market",
-        cost: 0.5,
-        source: "environmental",
       },
     ],
   },
@@ -285,32 +175,6 @@ export const COUNTRIES = [
         id: 5,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Shift agricultural subsidies towards sustainable practices",
-        cost: 1,
-        source: "public",
-      },
-      {
-        id: 2,
-        name: "Develop pipeline of privately-funded carbon market projects",
-        cost: 0.5,
-        source: "private",
-      },
-      {
-        id: 3,
-        name: "Direct regional carbon tax revenue to NCS",
-        cost: 0.5,
-        source: "environmental",
-      },
-      {
-        id: 4,
-        name: "Reform impact metrics for government programs (e.g., Sembrando Vida)",
-        cost: 0,
-        source: "public",
-      },
-    ],
   },
   {
     available_min: 188.46865733764855,
@@ -343,32 +207,6 @@ export const COUNTRIES = [
         source: "public",
         cost: 27.286853949772908,
         id: 4,
-      },
-    ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Develop a sustainable forestry sector with focus on targeted reforestation",
-        cost: 1.5,
-        source: "private",
-      },
-      {
-        id: 2,
-        name: "Shift market incentives to grow sustainable agriculture (cattle, palm oil)",
-        cost: 1.5,
-        source: "private",
-      },
-      {
-        id: 3,
-        name: "Create federal-regional funding incentives (e.g., via an EFT)",
-        cost: 1,
-        source: "public",
-      },
-      {
-        id: 4,
-        name: "Shift fertilizer subsidy / rural credit to reward sustainable cattle ranching",
-        cost: 0.5,
-        source: "public",
       },
     ],
   },
@@ -405,26 +243,6 @@ export const COUNTRIES = [
         id: 4,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Build and support pipeline of new carbon market NCS projects",
-        cost: 1.5,
-        source: "environmental",
-      },
-      {
-        id: 2,
-        name: "Shift industry incentives for cattle ranching (i.e., methane tax)",
-        cost: 1,
-        source: "public",
-      },
-      {
-        id: 3,
-        name: "Connect private investors to local projects (e.g., IFM, blue carbon)",
-        cost: 0.5,
-        source: "private",
-      },
-    ],
   },
   {
     available_min: 199.36,
@@ -454,32 +272,6 @@ export const COUNTRIES = [
         id: 3,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Develop and build infrastructure for eco-tourism",
-        cost: 1,
-        source: "private",
-      },
-      {
-        id: 2,
-        name: "Grow sustainable timber industry via more domestic processing",
-        cost: 1,
-        source: "private",
-      },
-      {
-        id: 3,
-        name: "Access carbon market funding for current CO2 sequestration",
-        cost: 0.5,
-        source: "environmental",
-      },
-      {
-        id: 4,
-        name: "Identify and unlock alternative HFLD financing (e.g., PFPs",
-        cost: 0.5,
-        source: "international",
-      },
-    ],
   },
   {
     available_min: 62.0,
@@ -507,38 +299,6 @@ export const COUNTRIES = [
         source: "public",
         cost: 44.755115374999995,
         id: 3,
-      },
-    ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Emphasize the importance of NCS-specific government funding",
-        cost: 0,
-        source: "public",
-      },
-      {
-        id: 2,
-        name: "Drive subsidy reform in the petroleum industry",
-        cost: 1.5,
-        source: "public",
-      },
-      {
-        id: 3,
-        name: "Support additional nature bonds (e.g., deal to fund Galapagos conservation)",
-        cost: 1.5,
-        source: "environmental",
-      },
-      {
-        id: 4,
-        name: "Work with carbon project developers to set up REDD+ projects",
-        cost: 0,
-        source: "international",
-      },
-      {
-        id: 5,
-        name: "Set up a collaboration model with other Amazon basin country teams to amplify the needs for the region as a whole",
-        cost: 0,
-        source: "international",
       },
     ],
   },
@@ -580,14 +340,6 @@ export const COUNTRIES = [
         id: 5,
       },
     ],
-    opportunities: [
-      {
-        id: 1,
-        name: "Dedicated government budget allocations to climate change and new forestry green bond in private markets",
-        cost: 0,
-        source: "public",
-      },
-    ],
   },
 ]
   .map((country) => {
@@ -600,17 +352,3 @@ export const COUNTRIES = [
   .sort((a, b) => {
     return b.available + b.needed - (a.available + a.needed);
   }) as Country[];
-
-// get unique sources rom opportunities
-export const SOURCE_OPPORTUNIIES = COUNTRIES.reduce((acc, country) => {
-  country.opportunities.forEach((opportunity) => {
-    if (!acc.includes(opportunity.source)) {
-      acc.push(opportunity.source);
-    }
-  });
-  return acc;
-}, [] as Source[]);
-
-export const MAX_OPPORTUNITIES = Math.max(
-  ...COUNTRIES.map((country) => country.opportunities.length),
-);

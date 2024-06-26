@@ -9,7 +9,6 @@ import { Country } from "@/types/country";
 import { LABEL_MARGIN } from "@/constants/charts";
 
 import ChartGap from "@/containers/home/chart/gap";
-import ChartOpportunities from "@/containers/home/chart/opportunities";
 import ChartProvider from "@/containers/home/chart/provider";
 import DriversTooltip from "@/containers/home/chart/tooltips/drivers";
 import NeedsTooltip from "@/containers/home/chart/tooltips/needs";
@@ -26,7 +25,7 @@ const ChartLabel = dynamic(() => import("@/containers/home/chart/label"), {
 export type ChartProps = {
   data: Country;
   index: number;
-  mode: "drivers" | "gap" | "opportunities";
+  mode: "drivers" | "gap";
   unit: "absolute" | "relative";
   width: number;
   height: number;
@@ -82,31 +81,27 @@ export default function Chart({
             <ChartDrivers />
 
             <ChartGap />
-
-            <ChartOpportunities />
           </ChartProvider>
         </div>
       </TooltipTrigger>
 
-      {mode !== "opportunities" && (
-        <TooltipContent
-          className="w-full min-w-[380px] p-8"
-          {...(mode === "drivers" && {
-            side: "top",
-            sideOffset: -parentHeight,
-          })}
-          {...(mode === "gap" && {
-            side: "right",
-            sideOffset:
-              parentWidth - max - LABEL_MARGIN - 20 > 380
-                ? -(parentWidth - max - LABEL_MARGIN - 20)
-                : -380,
-          })}
-        >
-          {mode === "drivers" && <DriversTooltip data={data} />}
-          {mode === "gap" && <NeedsTooltip data={data} />}
-        </TooltipContent>
-      )}
+      <TooltipContent
+        className="w-full min-w-[380px] p-8"
+        {...(mode === "drivers" && {
+          side: "top",
+          sideOffset: -parentHeight,
+        })}
+        {...(mode === "gap" && {
+          side: "right",
+          sideOffset:
+            parentWidth - max - LABEL_MARGIN - 20 > 380
+              ? -(parentWidth - max - LABEL_MARGIN - 20)
+              : -380,
+        })}
+      >
+        {mode === "drivers" && <DriversTooltip data={data} />}
+        {mode === "gap" && <NeedsTooltip data={data} />}
+      </TooltipContent>
     </Tooltip>
   );
 }

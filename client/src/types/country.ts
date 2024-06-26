@@ -21,11 +21,4 @@ export type Country = {
     cost: number;
     source: Source;
   }[];
-
-  opportunities: {
-    id: number;
-    name: string;
-    cost: number;
-    source: Source;
-  }[];
 };

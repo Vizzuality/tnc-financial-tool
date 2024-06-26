@@ -28,7 +28,7 @@ const variants = {
 };
 
 interface HeaderProps {
-  mode: "drivers" | "gap" | "opportunities";
+  mode: "drivers" | "gap";
   unit: "absolute" | "relative";
   onUnitChange: (unit: "absolute" | "relative") => void;
 }
@@ -89,21 +89,6 @@ const Header = ({ mode, unit, onUnitChange }: HeaderProps): JSX.Element => {
               >
                 Relative GDP
               </button>
-            </div>
-          </motion.header>
-        )}
-
-        {mode === "opportunities" && (
-          <motion.header
-            {...variants}
-            className="absolute left-0 top-0 flex w-full justify-between"
-          >
-            <div className="space-y-2.5 2xl:space-y-5">
-              <h1 className="text-sm font-bold uppercase tracking-widest">Funding opportunities</h1>
-              <p className="max-w-4xl text-2lg">
-                Policy reforms, carbon markets, and nature-positive economies have the greatest
-                potential to <span className="text-sky">accelerate the implementation of NCS.</span>
-              </p>
             </div>
           </motion.header>
         )}

@@ -66,7 +66,6 @@ export default function ChartDrivers() {
 
   // Size
   const width = useMemo(() => {
-    if (mode === "opportunities") return 0;
     return mode !== "drivers" ? widthScale(percentage) : 180;
   }, [mode, percentage, widthScale]);
 
