@@ -72,9 +72,7 @@ const Header = () => {
                   className="flex h-[40px] shrink-0 cursor-pointer items-center space-x-2"
                 >
                   <Image src="/svgs/naturebase.svg" alt="Logo" width={40} height={20} />
-                  <p className="font-space-grotesk text-lg leading-none">
-                    NCS funding tool
-                  </p>
+                  <p className="font-space-grotesk text-lg leading-none">NCS funding tool</p>
                 </Link>
               )}
               <motion.div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer">
