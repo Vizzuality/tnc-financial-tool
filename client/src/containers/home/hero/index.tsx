@@ -25,7 +25,14 @@ const Hero = (): JSX.Element => {
                 </p>
               </div>
               <p>
-                <a className="hover:underline" target="_blank" rel="noreferrer" href="https://www.nature.org/content/dam/tnc/nature/en/documents/Natural_Climate_Solutions_Funding_Study_2023.pdf">Learn more about the study.</a>
+                <a
+                  className="hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.nature.org/content/dam/tnc/nature/en/documents/Natural_Climate_Solutions_Funding_Study_2023.pdf"
+                >
+                  Learn more about the study.
+                </a>
               </p>
             </div>
 
