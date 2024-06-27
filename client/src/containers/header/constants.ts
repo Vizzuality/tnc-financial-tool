@@ -11,7 +11,7 @@ export const NAV_OPTIONS = [
   },
   {
     id: "about",
-    label: "About TNC",
+    label: "About naturebase",
     href: "https://www.naturebase.org/about",
   },
 ];
