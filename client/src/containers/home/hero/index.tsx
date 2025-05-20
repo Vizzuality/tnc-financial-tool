@@ -40,8 +40,8 @@ const Hero = (): JSX.Element => {
               <p>
                 That is why TNC has developed a funding study focused on researching and defining
                 finance gaps for NCS and mapping out existing or new finance mechanisms that could
-                fill those gaps across 8 focus countries (Brazil, Indonesia, China, India, Mexico,
-                Colombia, Australia, and Gabon).
+                fill those gaps across 10 focus countries (Brazil, Indonesia, China, India, Mexico,
+                Colombia, Australia, Perú, Ecuador and Gabon).
               </p>
             </div>
           </div>

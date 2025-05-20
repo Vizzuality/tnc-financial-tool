@@ -46,7 +46,7 @@ const Header = ({ mode, unit, onUnitChange }: HeaderProps): JSX.Element => {
               <h1 className="text-sm font-bold uppercase tracking-widest">Funding drivers</h1>
               <p className="max-w-xl text-2lg">
                 <span className="text-grass">Public domestic funding</span> is the largest driver of
-                NCS funding in 6 of 8 focus countries.
+                NCS funding in 8 of 10 focus countries.
               </p>
             </div>
           </motion.header>
